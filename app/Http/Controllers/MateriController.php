@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Database\QueryException;
 
 use App\Models\Materi;
+use App\Models\Berkas;
 
 use ADHhelper;
 
@@ -102,7 +103,10 @@ class MateriController extends Controller
     public function destroy($id)
     {     
         try {
-            Pegawai::where(['id' => $id])->delete();   
+            $berkas = Berkas::where(['id_materi' => $id])->first();   
+            Berkas::where(['id_materi' => $id])->delete();   
+            unlink(storage_path('app/public/files/berkas/' . $berkas->id));
+            Materi::where(['id' => $id])->delete();   
         } catch (QueryException $exception) {
             return redirect()->back()->with('alert', [
                 'title' => 'ERROR !!!',
