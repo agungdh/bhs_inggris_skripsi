@@ -1,5 +1,10 @@
 <?php
 
+Route::resources([
+	'materi' => 'MateriController',
+]);
+Route::get('/materi/{id}/berkas', 'MateriController@berkas')->name('materi.berkas');
+
 Route::get('/', 'MainController@index')->name('main.index');
 Route::get('/logout', 'MainController@logout')->name('main.logout');
 Route::post('/login', 'MainController@login')->name('main.login');
@@ -40,3 +45,4 @@ Route::middleware(['MustLoggedIn'])->group(function () {
 		'user' => 'UserController',
 	]);
 });
+
