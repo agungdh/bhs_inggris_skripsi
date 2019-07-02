@@ -13,4 +13,9 @@ class Materi extends Model
     {
         return $this->hasOne('App\Models\Berkas', 'id_materi');
     }
+
+    public function soals()
+    {
+        return $this->hasMany('App\Models\Soal', 'id_materi');
+    }
 }

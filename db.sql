@@ -3,7 +3,7 @@
 -- Host: 127.0.0.1	Database: bhs_inggris_
 -- ------------------------------------------------------
 -- Server version 	5.5.5-10.1.38-MariaDB
--- Date: Tue, 02 Jul 2019 10:41:05 +0700
+-- Date: Tue, 02 Jul 2019 11:51:43 +0700
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -86,6 +86,7 @@ COMMIT;
 CREATE TABLE `soal` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `id_materi` int(11) NOT NULL,
+  `pertanyaan` text NOT NULL,
   `jawaban_a` varchar(191) NOT NULL,
   `jawaban_b` varchar(191) NOT NULL,
   `jawaban_c` varchar(191) NOT NULL,
@@ -95,7 +96,7 @@ CREATE TABLE `soal` (
   PRIMARY KEY (`id`),
   KEY `id_materi` (`id_materi`),
   CONSTRAINT `soal_ibfk_1` FOREIGN KEY (`id_materi`) REFERENCES `materi` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -105,11 +106,12 @@ CREATE TABLE `soal` (
 LOCK TABLES `soal` WRITE;
 /*!40000 ALTER TABLE `soal` DISABLE KEYS */;
 SET autocommit=0;
+INSERT INTO `soal` VALUES (1,3,'qwrqw rqwr qwr','1','2','3','4','5','b'),(2,3,'Berapakah jumlah satu ditambah satu','mungkin jawabannya adalah satu','atau bisa jadi empat','mungkin saja tiga','sepertinya dua','pastinya lima','d');
 /*!40000 ALTER TABLE `soal` ENABLE KEYS */;
 UNLOCK TABLES;
 COMMIT;
 
--- Dumped table `soal` with 0 row(s)
+-- Dumped table `soal` with 2 row(s)
 --
 
 --
@@ -186,4 +188,4 @@ COMMIT;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on: Tue, 02 Jul 2019 10:41:05 +0700
+-- Dump completed on: Tue, 02 Jul 2019 11:51:43 +0700
