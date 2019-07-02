@@ -1,11 +1,11 @@
 @extends('template.template')
 
 @section('title')
-Fungsi Umum
+Materi
 @endsection
 
 @section('nav')
-@include('fungsiumum.nav')
+@include('materi.nav')
 @endsection
 
 @section('content')
@@ -13,15 +13,15 @@ Fungsi Umum
 	<div class="col-md-12">
 		<div class="box box-primary">
 			<div class="box-header with-border">
-				<h3 class="box-title">Ubah Fungsi Umum</h3>
+				<h3 class="box-title">Ubah Materi</h3>
 			</div>
 
-			{!! Form::model($fungsiUmum, ['route' => ['fungsiumum.update', $fungsiUmum->id], 'role' => 'form', 'method' => 'put']) !!}
-				@include('fungsiumum.form')
+			{!! Form::model($materi, ['route' => ['materi.update', $materi->id], 'role' => 'form', 'method' => 'put', 'files' => true]) !!}
+				@include('materi.form')
 
 				<div class="box-footer">
 					<button type="submit" class="btn btn-success">Simpan</button>
-					<a href="{{route('fungsiumum.index')}}" class="btn btn-info">Batal</a>
+					<a href="{{route('materi.index')}}" class="btn btn-info">Batal</a>
 				</div>
 			{!! Form::close() !!}
 		</div>

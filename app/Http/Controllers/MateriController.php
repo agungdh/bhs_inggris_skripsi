@@ -67,31 +67,34 @@ class MateriController extends Controller
 
     public function edit($id)
     {
-        $fungsiUmum = Pegawai::find($id);
+        $materi = Materi::find($id);
 
-        return view('materi.edit', compact(['fungsiUmum']));
+        return view('materi.edit', compact(['materi']));
     }
 
     public function update(Request $request, $id)
     {        
-        $fungsiUmum = Pegawai::find($id);
+        $materi = Materi::find($id);
 
         $request->validate([
-            'npp' => 'required',
-            'nama' => 'required',
+            'unit' => 'required',
+            'materi' => 'required',
+            'deskripsi' => 'required',
+            'berkas' => 'file|mimes:pdf',
         ]);
 
-        if ($request->npp != $fungsiUmum->npp) {
-            $request->validate([
-                'npp' => 'unique:pegawai,npp',
-            ]);
-        }
-
-        $data = $request->only('nama', 'npp');
-        $data['updated_at'] = date('Y-m-d H:i:s');
-        $data['updated_by'] = session('userID');
+        $data = $request->only('unit', 'materi', 'deskripsi');
         
-        Pegawai::where(['id' => $id])->update($data);
+        Materi::where('id', $id)->update($data);
+
+        $berkas = $request->file('berkas');
+        if ($berkas) {
+            $files = $materi->berkas;
+            $files->filename = $berkas->getClientOriginalName();
+            $files->save();
+            
+            $berkas->move(storage_path('app/public/files/berkas'), $files->id);
+        }
 
         return redirect()->route('materi.index')->with('alert', [
             'title' => 'BERHASIL !!!',

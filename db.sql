@@ -3,7 +3,7 @@
 -- Host: 127.0.0.1	Database: bhs_inggris_
 -- ------------------------------------------------------
 -- Server version 	5.5.5-10.1.38-MariaDB
--- Date: Tue, 02 Jul 2019 10:32:41 +0700
+-- Date: Tue, 02 Jul 2019 10:41:05 +0700
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -29,7 +29,7 @@ CREATE TABLE `files` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `id_materi` (`id_materi`),
   CONSTRAINT `files_ibfk_1` FOREIGN KEY (`id_materi`) REFERENCES `materi` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -39,7 +39,7 @@ CREATE TABLE `files` (
 LOCK TABLES `files` WRITE;
 /*!40000 ALTER TABLE `files` DISABLE KEYS */;
 SET autocommit=0;
-INSERT INTO `files` VALUES (2,3,'20190518055721_00001.pdf'),(3,4,'Absensi Pegawai BAPPEDA Pringsewu Februari 2002.pdf');
+INSERT INTO `files` VALUES (2,3,'absensiMei 2019.pdf'),(3,4,'Absensi Pegawai BAPPEDA Pringsewu Februari 2002.pdf');
 /*!40000 ALTER TABLE `files` ENABLE KEYS */;
 UNLOCK TABLES;
 COMMIT;
@@ -186,4 +186,4 @@ COMMIT;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on: Tue, 02 Jul 2019 10:32:41 +0700
+-- Dump completed on: Tue, 02 Jul 2019 10:41:05 +0700
