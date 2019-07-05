@@ -83,7 +83,7 @@ class MainController extends Controller
 
     function index() {
 		if (session('login') == true) {
-			return redirect()->route('pemakaian.index');
+			return redirect()->route('materi.index');
 		} else {
 			return view('template.login');
 		}

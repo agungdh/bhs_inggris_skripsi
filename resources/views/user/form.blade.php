@@ -1,83 +1,64 @@
 <div class="box-body">
 
-	<div class="col-md-6">
-		@php
-		$class = $errors->has('id_pegawai') ? 'form-group has-error' : 'form-group';
-		$message = $errors->has('id_pegawai') ? $errors->first('id_pegawai') : '';
-		@endphp
-		<div class="{{$class}}">
-			<label for="id_pegawai" data-toggle="tooltip" title="{{$message}}">Pegawai</label>
-			<div data-toggle="tooltip" title="{{$message}}">
-				{!! Form::select('id_pegawai',$pegawais,null,['class'=> 'form-control select2','placeholder'=>'Pilih Pegawai','id'=>'id_pegawai']) !!}
-			</div>
+	@php
+	$class = $errors->has('nama') ? 'form-group has-error' : 'form-group';
+	$message = $errors->has('nama') ? $errors->first('nama') : '';
+	@endphp
+	<div class="{{$class}}">
+		<label for="nama" data-toggle="tooltip" title="{{$message}}">Nama</label>
+		<div data-toggle="tooltip" title="{{$message}}">
+			{!! Form::text('nama',null,['class'=> 'form-control', 'placeholder'=>'Isi Nama', 'id' => 'nama']) !!}
 		</div>
 	</div>
 
-	<div class="col-md-6">
-		@php
-		$class = $errors->has('username') ? 'form-group has-error' : 'form-group';
-		$message = $errors->has('username') ? $errors->first('username') : '';
-		@endphp
-		<div class="{{$class}}">
-			<label for="username" data-toggle="tooltip" title="{{$message}}">Username</label>
-			<div data-toggle="tooltip" title="{{$message}}">
-				{!! Form::text('username',null,['class'=> 'form-control', 'placeholder'=>'Isi Username', 'id' => 'username']) !!}
-			</div>
+	@php
+	$class = $errors->has('username') ? 'form-group has-error' : 'form-group';
+	$message = $errors->has('username') ? $errors->first('username') : '';
+	@endphp
+	<div class="{{$class}}">
+		<label for="username" data-toggle="tooltip" title="{{$message}}">Username</label>
+		<div data-toggle="tooltip" title="{{$message}}">
+			{!! Form::text('username',null,['class'=> 'form-control', 'placeholder'=>'Isi Username', 'id' => 'username']) !!}
 		</div>
 	</div>
 
-	<div class="col-md-6">
-		@php
-		$class = $errors->has('password') ? 'form-group has-error' : 'form-group';
-		$message = $errors->has('password') ? $errors->first('password') : '';
-		@endphp
-		<div class="{{$class}}">
-			<label for="password" data-toggle="tooltip" title="{{$message}}">Password</label>
-			<div data-toggle="tooltip" title="{{$message}}">
-				{!! Form::password('password',['class'=> 'form-control','placeholder'=>'Isi Password', 'id' => 'password']) !!}
-			</div>
+	@php
+	$class = $errors->has('level') ? 'form-group has-error' : 'form-group';
+	$message = $errors->has('level') ? $errors->first('level') : '';
+	@endphp
+	<div class="{{$class}}">
+		<label for="level" data-toggle="tooltip" title="{{$message}}">Level</label>
+		<div data-toggle="tooltip" title="{{$message}}">
+			{!! Form::select('level',[
+					'a' => 'Administrator',
+					's' => 'Siswa',
+				],null,['class'=> 'form-control select2','placeholder'=>'Pilih Level','id'=>'level']) !!}
+		</div>
+	</div>
+
+	@php
+	$class = $errors->has('password') ? 'form-group has-error' : 'form-group';
+	$message = $errors->has('password') ? $errors->first('password') : '';
+	@endphp
+	<div class="{{$class}}">
+		<label for="password" data-toggle="tooltip" title="{{$message}}">Password</label>
+		<div data-toggle="tooltip" title="{{$message}}">
+			{!! Form::password('password',['class'=> 'form-control','placeholder'=>'Isi Password', 'id' => 'password']) !!}
 		</div>
 	</div>
 	
-	<div class="col-md-6">
-		@php
-		$class = $errors->has('password') ? 'form-group has-error' : 'form-group';
-		$message = $errors->has('password') ? $errors->first('password') : '';
-		@endphp
-		<div class="{{$class}}">
-			<label for="password_confirmation" data-toggle="tooltip" title="{{$message}}">Password Konfirmasi</label>
-			<div data-toggle="tooltip" title="{{$message}}">
-				{!! Form::password('password_confirmation',['class'=> 'form-control','placeholder'=>'Isi Password Konfirmasi', 'id' => 'password_confirmation']) !!}
-			</div>
+	@php
+	$class = $errors->has('password') ? 'form-group has-error' : 'form-group';
+	$message = $errors->has('password') ? $errors->first('password') : '';
+	@endphp
+	<div class="{{$class}}">
+		<label for="password_confirmation" data-toggle="tooltip" title="{{$message}}">Password Konfirmasi</label>
+		<div data-toggle="tooltip" title="{{$message}}">
+			{!! Form::password('password_confirmation',['class'=> 'form-control','placeholder'=>'Isi Password Konfirmasi', 'id' => 'password_confirmation']) !!}
 		</div>
 	</div>
 	
 </div>
 
 @section('js')
-<script type="text/javascript">
-	{{-- Event --}}
-	$("#id_pegawai").change(function() {
-		toggleUsername();
-	});
-</script>
-
-<script type="text/javascript">
-	{{-- Auto Start --}}
-	$(function() {
-		toggleUsername();
-	});
-</script>
-
-<script type="text/javascript">
-	{{-- Function --}}
-	function toggleUsername() {
-		if ($("#id_pegawai").val() == "")
-		{
-			$("#username").prop("readonly", false);
-		} else {
-			$("#username").prop("readonly", true);
-		}
-	}
-</script>
 @endsection

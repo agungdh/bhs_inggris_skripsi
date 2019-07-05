@@ -17,7 +17,7 @@ use File;
 class ADHhelper extends Pustaka
 {
     public static function getUserData() {
-        return User::with('pegawai')->find(session('userID'));
+        return User::find(session('userID'));
     }
 
     public static function openFileWithFileName($filePath, $fileName) {

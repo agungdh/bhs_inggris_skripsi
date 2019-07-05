@@ -2,6 +2,8 @@
 
 Route::resources([
 	'materi' => 'MateriController',
+	'user' => 'UserController',
+	'ujian' => 'UjianController',
 ]);
 
 Route::get('/materi/{id}/berkas', 'MateriController@berkas')->name('materi.berkas');
@@ -13,6 +15,7 @@ Route::get('/soal/{id}/edit', 'SoalController@edit')->name('soal.edit');
 Route::put('/soal/{id}', 'SoalController@update')->name('soal.update');
 Route::delete('/soal/{id}', 'SoalController@destroy')->name('soal.destroy');
 
+// ===========================================================================
 
 Route::get('/', 'MainController@index')->name('main.index');
 Route::get('/logout', 'MainController@logout')->name('main.logout');
@@ -51,7 +54,6 @@ Route::middleware(['MustLoggedIn'])->group(function () {
 		'fungsiumum' => 'FungsiUmumController',
 		'kendaraan' => 'KendaraanController',
 		'pemakaian' => 'PemakaianController',
-		'user' => 'UserController',
 	]);
 });
 

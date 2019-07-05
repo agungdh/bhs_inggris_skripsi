@@ -17,6 +17,7 @@ Soal
             </div>
             <!-- /.box-header -->
             <div class="box-body">
+              <p>{{$materi->unit}} - {{$materi->materi}}</p>
             	<a class="btn btn-success btn-sm" href="{{route('soal.create', $materi->id)}}">
                   <i class="glyphicon glyphicon-plus"></i> Tambah
                 </a><br><br>
@@ -40,51 +41,51 @@ Soal
                     <td>
                       @if($item->kunci == 'a')
                       <b style="color: green;">
+                      @else
+                      <b style="color: red;">  
                       @endif
                       {{$item->jawaban_a}}
-                      @if($item->kunci == 'a')
                       </b>
-                      @endif
                     </td>
                     
                     <td>
                       @if($item->kunci == 'b')
                       <b style="color: green;">
+                      @else
+                      <b style="color: red;">  
                       @endif
                       {{$item->jawaban_b}}
-                      @if($item->kunci == 'b')
                       </b>
-                      @endif
                     </td>
                     
                     <td>
                       @if($item->kunci == 'c')
                       <b style="color: green;">
+                      @else
+                      <b style="color: red;">  
                       @endif
                       {{$item->jawaban_c}}
-                      @if($item->kunci == 'c')
                       </b>
-                      @endif
                     </td>
                     
                     <td>
                       @if($item->kunci == 'd')
                       <b style="color: green;">
+                      @else
+                      <b style="color: red;">  
                       @endif
                       {{$item->jawaban_d}}
-                      @if($item->kunci == 'd')
                       </b>
-                      @endif
                     </td>
                     
                     <td>
                       @if($item->kunci == 'e')
                       <b style="color: green;">
+                      @else
+                      <b style="color: red;">  
                       @endif
                       {{$item->jawaban_e}}
-                      @if($item->kunci == 'e')
                       </b>
-                      @endif
                     </td>
 
                 		<td>

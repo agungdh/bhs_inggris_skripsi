@@ -1,5 +1,5 @@
 <div class="box-body">
-
+	<p>{{$materi->unit}} - {{$materi->materi}}</p>
 	@php
 	$class = $errors->has('pertanyaan') ? 'form-group has-error' : 'form-group';
 	$message = $errors->has('pertanyaan') ? $errors->first('pertanyaan') : '';

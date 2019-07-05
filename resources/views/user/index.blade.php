@@ -23,9 +23,8 @@
               <table class="table table-bordered table-hover datatable" style="width: 100%">
                 <thead>
 	                <tr>
-	                  <th>Username / NPP</th>
+	                  <th>Username</th>
                     <th>Nama</th>
-                    <th>Tipe</th>
                     <th>Level</th>
 	                  <th>Proses</th>
 	                </tr>
@@ -33,54 +32,9 @@
                 <tbody>
                 	@foreach($users as $item)
                 	<tr>
-                		<td>{{$item->pegawai ? $item->pegawai->npp : $item->username}}</td>
-                    <td>{{$item->pegawai ? $item->pegawai->nama : $item->username}}</td>
-                    @php
-                    if ($item->pegawai) {
-                          switch ($item->pegawai->tipe) {
-                              case 'pw':
-                                  $tipe = 'Pegawai';
-                                  break;
-                              case 'pg':
-                                  $tipe = 'Pengemudi';
-                                  break;
-                              case 'pj':
-                                  $tipe = 'Petugas Jaga';
-                                  break;
-                              case 'fu':
-                                  $tipe = 'Fungsi Umum';
-                                  break;
-                              default:
-                                  $tipe = '#N/A';
-                                  break;
-                          }
-                      } else {
-                        $tipe = $item->username;
-                      }
-                    switch ($item->level) {
-                      case 'a':
-                        $level = 'Admin';
-                        break;
-                      case 'pw':
-                        $level = 'Pegawai';
-                        break;
-                      case 'pg':
-                        $level = 'Pengemudi';
-                        break;
-                      case 'pj':
-                        $level = 'Petugas Jaga';
-                        break;
-                      case 'fu':
-                        $level = 'Fungsi Umum';
-                        break;
-                      default:
-                        $level = '#N/A';
-                        break;
-                    }
-                    @endphp
-
-                    <td>{{$tipe}}</td>
-                    <td>{{$level}}</td>
+                    <td>{{$item->username}}</td>
+                    <td>{{$item->nama}}</td>
+                    <td>{{$item->level == 'a' ? 'Administrator' : 'Siswa'}}</td>
                 		
                 		<td>
 

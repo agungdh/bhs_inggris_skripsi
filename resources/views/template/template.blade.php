@@ -91,7 +91,7 @@ if(session('login')) {
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <img src="{{asset('storage/assets')}}/favicon/cbfjg-rsl5i.png" class="user-image" alt="User Image">
-              {{-- <span class="hidden-xs">{{$userData->pegawai ? $userData->pegawai->nama : $userData->username}}</span> --}}
+              <span class="hidden-xs">{{$userData->nama}}</span>
             </a>
             <ul class="dropdown-menu">
               <!-- User image -->
@@ -100,8 +100,8 @@ if(session('login')) {
 
                 <p>
                   @if(session('login'))
-                    {{-- {{$userData->pegawai ? $userData->pegawai->nama : $userData->username}}
-                    <small>{{$userData->username}}</small> --}}
+                    {{$userData->username}}
+                    <small>{{$userData->level == 'a' ? 'Administrator' : 'Siswa'}}</small>
                   @endif
                 </p>
               </li>
