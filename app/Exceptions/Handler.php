@@ -7,7 +7,7 @@ use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 
 class Handler extends ExceptionHandler
 {
-    /**asfasfasfasf
+    /**
      * A list of the exception types that are not reported.
      *
      * @var array
