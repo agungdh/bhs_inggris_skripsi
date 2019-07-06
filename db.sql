@@ -3,7 +3,7 @@
 -- Host: 127.0.0.1	Database: bhs_inggris_
 -- ------------------------------------------------------
 -- Server version 	5.5.5-10.1.38-MariaDB
--- Date: Tue, 02 Jul 2019 11:51:43 +0700
+-- Date: Sat, 06 Jul 2019 15:31:06 +0700
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -29,7 +29,7 @@ CREATE TABLE `files` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `id_materi` (`id_materi`),
   CONSTRAINT `files_ibfk_1` FOREIGN KEY (`id_materi`) REFERENCES `materi` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -96,7 +96,7 @@ CREATE TABLE `soal` (
   PRIMARY KEY (`id`),
   KEY `id_materi` (`id_materi`),
   CONSTRAINT `soal_ibfk_1` FOREIGN KEY (`id_materi`) REFERENCES `materi` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -106,12 +106,66 @@ CREATE TABLE `soal` (
 LOCK TABLES `soal` WRITE;
 /*!40000 ALTER TABLE `soal` DISABLE KEYS */;
 SET autocommit=0;
-INSERT INTO `soal` VALUES (1,3,'qwrqw rqwr qwr','1','2','3','4','5','b'),(2,3,'Berapakah jumlah satu ditambah satu','mungkin jawabannya adalah satu','atau bisa jadi empat','mungkin saja tiga','sepertinya dua','pastinya lima','d');
+INSERT INTO `soal` VALUES (1,3,'qwrqw rqwr qwr','1','2','3','4','5','b'),(2,3,'Berapakah jumlah satu ditambah satu','mungkin jawabannya adalah satu','atau bisa jadi empat','mungkin saja tiga','sepertinya dua','pastinya lima','d'),(3,3,'qwrqw rqwr qwr','1','2','3','4','5','b'),(4,3,'Berapakah jumlah satu ditambah satu','mungkin jawabannya adalah satu','atau bisa jadi empat','mungkin saja tiga','sepertinya dua','pastinya lima','d'),(5,3,'qwrqw rqwr qwr','1','2','3','4','5','b'),(6,3,'Berapakah jumlah satu ditambah satu','mungkin jawabannya adalah satu','atau bisa jadi empat','mungkin saja tiga','sepertinya dua','pastinya lima','d'),(7,3,'qwrqw rqwr qwr','1','2','3','4','5','b'),(8,3,'Berapakah jumlah satu ditambah satu','mungkin jawabannya adalah satu','atau bisa jadi empat','mungkin saja tiga','sepertinya dua','pastinya lima','d'),(9,3,'qwrqw rqwr qwr','1','2','3','4','5','b'),(10,3,'Berapakah jumlah satu ditambah satu','mungkin jawabannya adalah satu','atau bisa jadi empat','mungkin saja tiga','sepertinya dua','pastinya lima','d'),(11,3,'qwrqw rqwr qwr','1','2','3','4','5','b'),(12,3,'Berapakah jumlah satu ditambah satu','mungkin jawabannya adalah satu','atau bisa jadi empat','mungkin saja tiga','sepertinya dua','pastinya lima','d'),(13,3,'qwrqw rqwr qwr','1','2','3','4','5','b'),(14,3,'Berapakah jumlah satu ditambah satu','mungkin jawabannya adalah satu','atau bisa jadi empat','mungkin saja tiga','sepertinya dua','pastinya lima','d'),(15,3,'qwrqw rqwr qwr','1','2','3','4','5','b'),(16,3,'Berapakah jumlah satu ditambah satu','mungkin jawabannya adalah satu','atau bisa jadi empat','mungkin saja tiga','sepertinya dua','pastinya lima','d');
 /*!40000 ALTER TABLE `soal` ENABLE KEYS */;
 UNLOCK TABLES;
 COMMIT;
 
--- Dumped table `soal` with 2 row(s)
+-- Dumped table `soal` with 16 row(s)
+--
+
+--
+-- Table structure for table `soal_akhir`
+--
+
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `soal_akhir` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id_materi` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `soal_akhir`
+--
+
+LOCK TABLES `soal_akhir` WRITE;
+/*!40000 ALTER TABLE `soal_akhir` DISABLE KEYS */;
+SET autocommit=0;
+/*!40000 ALTER TABLE `soal_akhir` ENABLE KEYS */;
+UNLOCK TABLES;
+COMMIT;
+
+-- Dumped table `soal_akhir` with 0 row(s)
+--
+
+--
+-- Table structure for table `soal_mid`
+--
+
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `soal_mid` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id_materi` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `soal_mid`
+--
+
+LOCK TABLES `soal_mid` WRITE;
+/*!40000 ALTER TABLE `soal_mid` DISABLE KEYS */;
+SET autocommit=0;
+/*!40000 ALTER TABLE `soal_mid` ENABLE KEYS */;
+UNLOCK TABLES;
+COMMIT;
+
+-- Dumped table `soal_mid` with 0 row(s)
 --
 
 --
@@ -131,7 +185,7 @@ CREATE TABLE `ujian` (
   KEY `ujian_ibfk_2` (`id_user`),
   CONSTRAINT `ujian_ibfk_1` FOREIGN KEY (`id_materi`) REFERENCES `materi` (`id`),
   CONSTRAINT `ujian_ibfk_2` FOREIGN KEY (`id_user`) REFERENCES `user` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -162,7 +216,7 @@ CREATE TABLE `user` (
   `nama` varchar(191) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `username` (`username`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -172,11 +226,12 @@ CREATE TABLE `user` (
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
 SET autocommit=0;
+INSERT INTO `user` VALUES (1,'admin','$2y$12$83K/WnkWWoEbcd5KEvvouOMHQ.hk6LjyYzDP1V97FZQ/LbcVfdd/u','a','Administrator'),(3,'siswa1','$2y$10$v2CeJIK0c8rxckC/dVyBSOhcW2aM6z8lgCpnb1oFc1KBa2g/8.dnO','s','Siswa 1');
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 COMMIT;
 
--- Dumped table `user` with 0 row(s)
+-- Dumped table `user` with 2 row(s)
 --
 
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -188,4 +243,4 @@ COMMIT;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on: Tue, 02 Jul 2019 11:51:43 +0700
+-- Dump completed on: Sat, 06 Jul 2019 15:31:06 +0700

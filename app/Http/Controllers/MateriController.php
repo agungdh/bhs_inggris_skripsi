@@ -7,6 +7,8 @@ use Illuminate\Database\QueryException;
 
 use App\Models\Materi;
 use App\Models\Berkas;
+use App\Models\Soal;
+use App\Models\Ujian;
 
 use ADHhelper;
 
@@ -123,5 +125,40 @@ class MateriController extends Controller
             'message' => 'Berhasil Hapus Data',
             'class' => 'success',
         ]);        
+    }
+
+    public function ujian($id_materi)
+    {
+        $materi = Materi::find($id_materi);
+        $soals = Soal::where('id_materi', $materi->id)->inRandomOrder()->limit(15)->get();
+
+        return view('materi.ujian', compact(['materi', 'soals']));
+    }
+
+    public function simpanUjian(Request $request, $id_materi)
+    {
+        $materi = Materi::find($id_materi);
+        
+        $jawabans = $request->soal ?: [];
+        $soals_raw = array_keys($jawabans);
+        $soals = Soal::whereIn('id', $soals_raw)->get();
+
+        $benar = 0;
+        foreach ($soals as $soal) {
+            if ($jawabans[$soal->id] == $soal->kunci) {
+                $benar++;
+            }
+        }
+
+        $nilai = (int)($benar / 15 * 100);
+
+        Ujian::insert([
+            'id_user' => session('userID'),
+            'id_materi' => $id_materi,
+            'nilai' => $nilai,
+            'waktu' => date('Y-m-d H:i:s'),
+        ]);
+
+        return redirect()->route('materi.index');
     }
 }

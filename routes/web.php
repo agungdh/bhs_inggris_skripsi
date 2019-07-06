@@ -3,10 +3,13 @@
 Route::resources([
 	'materi' => 'MateriController',
 	'user' => 'UserController',
-	'ujian' => 'UjianController',
+	'mid' => 'MidController',
+	'akhir' => 'AkhirController',
 ]);
 
 Route::get('/materi/{id}/berkas', 'MateriController@berkas')->name('materi.berkas');
+Route::get('/materi/{id}/ujian', 'MateriController@ujian')->name('materi.ujian');
+Route::post('/materi/{id}/ujian', 'MateriController@simpanUjian')->name('materi.simpanUjian');
 
 Route::get('/soal/{id_materi}', 'SoalController@index')->name('soal.index');
 Route::get('/soal/{id_materi}/create', 'SoalController@create')->name('soal.create');

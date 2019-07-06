@@ -26,15 +26,29 @@ Materi
 	                  <th>Unit</th>
                     <th>Materi</th>
                     <th>Deskripsi</th>
+                    @if(ADHhelper::getUserData()->level == 's')
+                    <th>Nilai</th>
+                    @endif
 	                  <th>Proses</th>
 	                </tr>
                 </thead>
                 <tbody>
                 	@foreach($materis as $item)
+
+                    @php
+                        $nilai = DB::table('ujian')->where([
+                            'id_user' => session('userID'),
+                            'id_materi' => $item->id,
+                        ])->first();
+                    @endphp
+
                 	<tr>
                 		<td>{{$item->unit}}</td>
                         <td>{{$item->materi}}</td>
                         <td>{{$item->deskripsi}}</td>
+                        @if(ADHhelper::getUserData()->level == 's')
+                        <td>{{$nilai ? $nilai->nilai : '-'}}</td>
+                        @endif
                 		
                 		<td>
 
@@ -44,6 +58,7 @@ Materi
 				                  <i class="glyphicon glyphicon-file"></i> Berkas
 				                </a>
 
+                                @if(ADHhelper::getUserData()->level == 'a')
                                 <a class="btn btn-default btn-sm" href="{{route('soal.index', $item->id)}}">
                                   <i class="glyphicon glyphicon-question-sign"></i> Soal
                                 </a>
@@ -53,6 +68,18 @@ Materi
                                 </a>
 
 			              		<button type="button" class="btn btn-danger btn-sm" onclick="hapus('{{ $item->id }}')"><i class="glyphicon glyphicon-trash"></i> Hapus</button>
+                                @else
+                                <a class="btn btn-default btn-sm"
+                                    @if(!$nilai)
+                                    href="{{route('materi.ujian', $item->id)}}"
+                                    @else
+                                    onclick="dahUjian()" 
+                                    @endif
+                                >
+                                  <i class="glyphicon glyphicon-question-sign"></i> Ujian
+                                </a>
+                                @endif
+
 			              	{!! Form::close() !!}
                 		</td>
                 	</tr>
@@ -79,6 +106,10 @@ function hapus(id) {
 	}, function(){
 	  $("#formHapus" + id).submit();
 	});
+}
+
+function dahUjian() {
+    swal('ERROR !!!', 'Anda sudah ujian !!!', 'error');
 }
 </script>
 @endsection
