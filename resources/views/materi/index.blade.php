@@ -93,6 +93,47 @@ Materi
           </div>
 	</div>
 </div>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="box box-primary">
+            <div class="box-header">
+              <h3 class="box-title">Data Ujian</h3>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body">
+              <table class="table table-bordered table-hover datatable" style="width: 100%">
+                <thead>
+                    <tr>
+                      <th>Ujian</th>
+                        @if(ADHhelper::getUserData()->level == 's')
+                        <th>Nilai</th>
+                        @endif
+                      <th>Proses</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Mid</td>
+                        @if(ADHhelper::getUserData()->level == 's')
+                        <td>{{$nilai ? $nilai->nilai : '-'}}</td>
+                        @endif
+                        <td>Mid</td>
+                    </tr>
+                    <tr>
+                        <td>Akhir</td>
+                        @if(ADHhelper::getUserData()->level == 's')
+                        <td>{{$nilai ? $nilai->nilai : '-'}}</td>
+                        @endif
+                        <td>Akhir</td>
+                    </tr>
+                </tbody>
+              </table>
+            </div>
+            <!-- /.box-body -->
+          </div>
+    </div>
+</div>
 @endsection
 
 @section('js')
