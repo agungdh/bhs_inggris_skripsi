@@ -46,9 +46,11 @@ class MateriController extends Controller
             'materi' => 'required',
             'deskripsi' => 'required',
             'berkas' => 'required|file|mimes:pdf',
+            'jumlah_pertanyaan_ujian' => 'required|numeric|min:0',
+            'jumlah_pertanyaan_mid' => 'required|numeric|min:0',
         ]);
 
-        $data = $request->only('unit', 'materi', 'deskripsi');
+        $data = $request->only('unit', 'materi', 'deskripsi', 'jumlah_pertanyaan_ujian', 'jumlah_pertanyaan_mid');
         
         $id_materi = DB::table('materi')->insertGetId($data);
 
@@ -83,9 +85,11 @@ class MateriController extends Controller
             'materi' => 'required',
             'deskripsi' => 'required',
             'berkas' => 'file|mimes:pdf',
+            'jumlah_pertanyaan_ujian' => 'required|numeric|min:0',
+            'jumlah_pertanyaan_mid' => 'required|numeric|min:0',
         ]);
 
-        $data = $request->only('unit', 'materi', 'deskripsi');
+        $data = $request->only('unit', 'materi', 'deskripsi', 'jumlah_pertanyaan_ujian', 'jumlah_pertanyaan_mid');
         
         Materi::where('id', $id)->update($data);
 
@@ -130,7 +134,7 @@ class MateriController extends Controller
     public function ujian($id_materi)
     {
         $materi = Materi::find($id_materi);
-        $soals = Soal::where('id_materi', $materi->id)->inRandomOrder()->limit(15)->get();
+        $soals = Soal::where('id_materi', $materi->id)->inRandomOrder()->limit($materi->jumlah_pertanyaan_ujian)->get();
 
         return view('materi.ujian', compact(['materi', 'soals']));
     }
@@ -150,7 +154,7 @@ class MateriController extends Controller
             }
         }
 
-        $nilai = (int)($benar / 15 * 100);
+        $nilai = (int)($benar / $materi->jumlah_pertanyaan_ujian * 100);
 
         Ujian::insert([
             'id_user' => session('userID'),

@@ -44,4 +44,26 @@
 		</div>
 	</div>
 
+	@php
+	$class = $errors->has('jumlah_pertanyaan_ujian') ? 'form-group has-error' : 'form-group';
+	$message = $errors->has('jumlah_pertanyaan_ujian') ? $errors->first('jumlah_pertanyaan_ujian') : '';
+	@endphp
+	<div class="{{$class}}">
+		<label for="jumlah_pertanyaan_ujian" data-toggle="tooltip" title="{{$message}}">Jumlah Pertanyaan Ujian</label>
+		<div data-toggle="tooltip" title="{{$message}}">
+			{!! Form::text('jumlah_pertanyaan_ujian',null,['class'=> 'form-control','placeholder'=>'Isi Jumlah Pertanyaan Ujian', 'id' => 'jumlah_pertanyaan_ujian']) !!}
+		</div>
+	</div>
+
+	@php
+	$class = $errors->has('jumlah_pertanyaan_mid') ? 'form-group has-error' : 'form-group';
+	$message = $errors->has('jumlah_pertanyaan_mid') ? $errors->first('jumlah_pertanyaan_mid') : '';
+	@endphp
+	<div class="{{$class}}">
+		<label for="jumlah_pertanyaan_mid" data-toggle="tooltip" title="{{$message}}">Jumlah Pertanyaan Mid</label>
+		<div data-toggle="tooltip" title="{{$message}}">
+			{!! Form::text('jumlah_pertanyaan_mid',null,['class'=> 'form-control','placeholder'=>'Isi Jumlah Pertanyaan Mid', 'id' => 'jumlah_pertanyaan_mid']) !!}
+		</div>
+	</div>
+
 </div>

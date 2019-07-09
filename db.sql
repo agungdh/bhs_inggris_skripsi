@@ -1,9 +1,9 @@
 -- mysqldump-php https://github.com/ifsnop/mysqldump-php
 --
--- Host: 127.0.0.1	Database: bhs_inggris_
+-- Host: 127.0.0.1	Database: bhs_inggris_skripsi
 -- ------------------------------------------------------
--- Server version 	5.5.5-10.1.38-MariaDB
--- Date: Sat, 06 Jul 2019 15:31:06 +0700
+-- Server version 	5.5.5-10.3.16-MariaDB
+-- Date: Tue, 09 Jul 2019 10:02:26 +0700
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -29,7 +29,7 @@ CREATE TABLE `files` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `id_materi` (`id_materi`),
   CONSTRAINT `files_ibfk_1` FOREIGN KEY (`id_materi`) REFERENCES `materi` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -39,12 +39,12 @@ CREATE TABLE `files` (
 LOCK TABLES `files` WRITE;
 /*!40000 ALTER TABLE `files` DISABLE KEYS */;
 SET autocommit=0;
-INSERT INTO `files` VALUES (2,3,'absensiMei 2019.pdf'),(3,4,'Absensi Pegawai BAPPEDA Pringsewu Februari 2002.pdf');
+INSERT INTO `files` VALUES (4,5,'Motherboard - GIGABYTE Indonesia.pdf');
 /*!40000 ALTER TABLE `files` ENABLE KEYS */;
 UNLOCK TABLES;
 COMMIT;
 
--- Dumped table `files` with 2 row(s)
+-- Dumped table `files` with 1 row(s)
 --
 
 --
@@ -58,8 +58,10 @@ CREATE TABLE `materi` (
   `materi` varchar(191) NOT NULL,
   `deskripsi` varchar(191) NOT NULL,
   `unit` varchar(191) NOT NULL,
+  `jumlah_pertanyaan_ujian` int(11) NOT NULL,
+  `jumlah_pertanyaan_mid` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -69,12 +71,12 @@ CREATE TABLE `materi` (
 LOCK TABLES `materi` WRITE;
 /*!40000 ALTER TABLE `materi` DISABLE KEYS */;
 SET autocommit=0;
-INSERT INTO `materi` VALUES (3,'Unit Satu','Ini Unit Satu','1'),(4,'Unit Dua','Ini Unit Dua','2');
+INSERT INTO `materi` VALUES (5,'Ini Unit 1','Ini Deskripsi Unit 1','1',20,5);
 /*!40000 ALTER TABLE `materi` ENABLE KEYS */;
 UNLOCK TABLES;
 COMMIT;
 
--- Dumped table `materi` with 2 row(s)
+-- Dumped table `materi` with 1 row(s)
 --
 
 --
@@ -96,7 +98,7 @@ CREATE TABLE `soal` (
   PRIMARY KEY (`id`),
   KEY `id_materi` (`id_materi`),
   CONSTRAINT `soal_ibfk_1` FOREIGN KEY (`id_materi`) REFERENCES `materi` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=64 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -106,66 +108,12 @@ CREATE TABLE `soal` (
 LOCK TABLES `soal` WRITE;
 /*!40000 ALTER TABLE `soal` DISABLE KEYS */;
 SET autocommit=0;
-INSERT INTO `soal` VALUES (1,3,'qwrqw rqwr qwr','1','2','3','4','5','b'),(2,3,'Berapakah jumlah satu ditambah satu','mungkin jawabannya adalah satu','atau bisa jadi empat','mungkin saja tiga','sepertinya dua','pastinya lima','d'),(3,3,'qwrqw rqwr qwr','1','2','3','4','5','b'),(4,3,'Berapakah jumlah satu ditambah satu','mungkin jawabannya adalah satu','atau bisa jadi empat','mungkin saja tiga','sepertinya dua','pastinya lima','d'),(5,3,'qwrqw rqwr qwr','1','2','3','4','5','b'),(6,3,'Berapakah jumlah satu ditambah satu','mungkin jawabannya adalah satu','atau bisa jadi empat','mungkin saja tiga','sepertinya dua','pastinya lima','d'),(7,3,'qwrqw rqwr qwr','1','2','3','4','5','b'),(8,3,'Berapakah jumlah satu ditambah satu','mungkin jawabannya adalah satu','atau bisa jadi empat','mungkin saja tiga','sepertinya dua','pastinya lima','d'),(9,3,'qwrqw rqwr qwr','1','2','3','4','5','b'),(10,3,'Berapakah jumlah satu ditambah satu','mungkin jawabannya adalah satu','atau bisa jadi empat','mungkin saja tiga','sepertinya dua','pastinya lima','d'),(11,3,'qwrqw rqwr qwr','1','2','3','4','5','b'),(12,3,'Berapakah jumlah satu ditambah satu','mungkin jawabannya adalah satu','atau bisa jadi empat','mungkin saja tiga','sepertinya dua','pastinya lima','d'),(13,3,'qwrqw rqwr qwr','1','2','3','4','5','b'),(14,3,'Berapakah jumlah satu ditambah satu','mungkin jawabannya adalah satu','atau bisa jadi empat','mungkin saja tiga','sepertinya dua','pastinya lima','d'),(15,3,'qwrqw rqwr qwr','1','2','3','4','5','b'),(16,3,'Berapakah jumlah satu ditambah satu','mungkin jawabannya adalah satu','atau bisa jadi empat','mungkin saja tiga','sepertinya dua','pastinya lima','d');
+INSERT INTO `soal` VALUES (17,5,'a','b','c','d','e','f','c'),(18,5,'a','b','c','d','e','f','c'),(19,5,'1','2','3','4','5','6','b'),(20,5,'a','b','c','d','e','f','c'),(21,5,'1','2','3','4','5','6','b'),(22,5,'a','b','c','d','e','f','c'),(23,5,'1','2','3','4','5','6','b'),(24,5,'a','b','c','d','e','f','c'),(25,5,'1','2','3','4','5','6','b'),(26,5,'a','b','c','d','e','f','c'),(27,5,'1','2','3','4','5','6','b'),(28,5,'a','b','c','d','e','f','c'),(29,5,'1','2','3','4','5','6','b'),(30,5,'a','b','c','d','e','f','c'),(31,5,'1','2','3','4','5','6','b'),(32,5,'a','b','c','d','e','f','c'),(33,5,'1','2','3','4','5','6','b'),(34,5,'a','b','c','d','e','f','c'),(35,5,'1','2','3','4','5','6','b'),(36,5,'a','b','c','d','e','f','c'),(37,5,'1','2','3','4','5','6','b'),(38,5,'a','b','c','d','e','f','c'),(39,5,'1','2','3','4','5','6','b'),(40,5,'a','b','c','d','e','f','c'),(41,5,'1','2','3','4','5','6','b'),(42,5,'a','b','c','d','e','f','c'),(43,5,'1','2','3','4','5','6','b'),(44,5,'a','b','c','d','e','f','c'),(45,5,'1','2','3','4','5','6','b'),(46,5,'a','b','c','d','e','f','c'),(47,5,'1','2','3','4','5','6','b'),(48,5,'a','b','c','d','e','f','c'),(49,5,'1','2','3','4','5','6','b'),(50,5,'a','b','c','d','e','f','c'),(51,5,'1','2','3','4','5','6','b'),(52,5,'a','b','c','d','e','f','c'),(53,5,'1','2','3','4','5','6','b'),(54,5,'a','b','c','d','e','f','c'),(55,5,'1','2','3','4','5','6','b'),(56,5,'a','b','c','d','e','f','c'),(57,5,'1','2','3','4','5','6','b'),(58,5,'a','b','c','d','e','f','c'),(59,5,'1','2','3','4','5','6','b'),(60,5,'a','b','c','d','e','f','c'),(61,5,'1','2','3','4','5','6','b'),(62,5,'a','b','c','d','e','f','c'),(63,5,'1','2','3','4','5','6','b');
 /*!40000 ALTER TABLE `soal` ENABLE KEYS */;
 UNLOCK TABLES;
 COMMIT;
 
--- Dumped table `soal` with 16 row(s)
---
-
---
--- Table structure for table `soal_akhir`
---
-
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `soal_akhir` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `id_materi` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `soal_akhir`
---
-
-LOCK TABLES `soal_akhir` WRITE;
-/*!40000 ALTER TABLE `soal_akhir` DISABLE KEYS */;
-SET autocommit=0;
-/*!40000 ALTER TABLE `soal_akhir` ENABLE KEYS */;
-UNLOCK TABLES;
-COMMIT;
-
--- Dumped table `soal_akhir` with 0 row(s)
---
-
---
--- Table structure for table `soal_mid`
---
-
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `soal_mid` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `id_materi` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `soal_mid`
---
-
-LOCK TABLES `soal_mid` WRITE;
-/*!40000 ALTER TABLE `soal_mid` DISABLE KEYS */;
-SET autocommit=0;
-/*!40000 ALTER TABLE `soal_mid` ENABLE KEYS */;
-UNLOCK TABLES;
-COMMIT;
-
--- Dumped table `soal_mid` with 0 row(s)
+-- Dumped table `soal` with 47 row(s)
 --
 
 --
@@ -185,7 +133,7 @@ CREATE TABLE `ujian` (
   KEY `ujian_ibfk_2` (`id_user`),
   CONSTRAINT `ujian_ibfk_1` FOREIGN KEY (`id_materi`) REFERENCES `materi` (`id`),
   CONSTRAINT `ujian_ibfk_2` FOREIGN KEY (`id_user`) REFERENCES `user` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -195,11 +143,12 @@ CREATE TABLE `ujian` (
 LOCK TABLES `ujian` WRITE;
 /*!40000 ALTER TABLE `ujian` DISABLE KEYS */;
 SET autocommit=0;
+INSERT INTO `ujian` VALUES (9,'2019-07-09 10:00:58',3,5,10);
 /*!40000 ALTER TABLE `ujian` ENABLE KEYS */;
 UNLOCK TABLES;
 COMMIT;
 
--- Dumped table `ujian` with 0 row(s)
+-- Dumped table `ujian` with 1 row(s)
 --
 
 --
@@ -216,7 +165,7 @@ CREATE TABLE `user` (
   `nama` varchar(191) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `username` (`username`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -226,12 +175,12 @@ CREATE TABLE `user` (
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
 SET autocommit=0;
-INSERT INTO `user` VALUES (1,'admin','$2y$12$83K/WnkWWoEbcd5KEvvouOMHQ.hk6LjyYzDP1V97FZQ/LbcVfdd/u','a','Administrator'),(3,'siswa1','$2y$10$v2CeJIK0c8rxckC/dVyBSOhcW2aM6z8lgCpnb1oFc1KBa2g/8.dnO','s','Siswa 1');
+INSERT INTO `user` VALUES (1,'admin','$2y$12$83K/WnkWWoEbcd5KEvvouOMHQ.hk6LjyYzDP1V97FZQ/LbcVfdd/u','a','Administrator'),(3,'siswa1','$2y$10$v2CeJIK0c8rxckC/dVyBSOhcW2aM6z8lgCpnb1oFc1KBa2g/8.dnO','s','Siswa 1'),(4,'siswa2','$2y$10$VBLNvf9fyce3AVLzeD5xpOJ/62tnu56ieHNgWOa6be7l38eeSEkrW','s','Siswa 2');
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 COMMIT;
 
--- Dumped table `user` with 2 row(s)
+-- Dumped table `user` with 3 row(s)
 --
 
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -243,4 +192,4 @@ COMMIT;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on: Sat, 06 Jul 2019 15:31:06 +0700
+-- Dump completed on: Tue, 09 Jul 2019 10:02:27 +0700

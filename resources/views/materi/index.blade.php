@@ -17,9 +17,11 @@ Materi
             </div>
             <!-- /.box-header -->
             <div class="box-body">
+                @if(ADHhelper::getUserData()->level == 'a')
             	<a class="btn btn-success btn-sm" href="{{route('materi.create')}}">
                   <i class="glyphicon glyphicon-plus"></i> Tambah
                 </a><br><br>
+                @endif
               <table class="table table-bordered table-hover datatable" style="width: 100%">
                 <thead>
 	                <tr>
