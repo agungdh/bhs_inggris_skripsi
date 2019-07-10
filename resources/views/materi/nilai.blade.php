@@ -6,7 +6,23 @@ Nilai
 
 @section('nav')
 @include('materi.nav')
-<li><a href="{{ route('materi.nilai', $materi->id) }}"> Nilai</a></li>
+@switch($type)
+    @case('materi')
+        <li><a href="{{ route('materi.nilai', $materi->id) }}"> Nilai</a></li>
+        @break
+
+    @case('mid')
+        <li><a href="{{ route('materi.nilaiMid') }}"> Nilai</a></li>  
+        @break
+
+    @case('akhir')
+        <li><a href="{{ route('materi.nilaiAkhir') }}"> Nilai</a></li>  
+        @break
+
+    @default
+        <span>Something went wrong, please try again</span>
+        @break
+@endswitch
 @endsection
 
 @section('content')
@@ -18,7 +34,23 @@ Nilai
             </div>
             <!-- /.box-header -->
             <div class="box-body">
-                <p>{{$materi->unit}} - {{$materi->materi}}</p>
+                @switch($type)
+                    @case('materi')
+                        <p>{{$materi->unit}} - {{$materi->materi}}</p>
+                        @break
+
+                    @case('mid')
+                        <p>Ujian Mid</p>
+                        @break
+
+                    @case('akhir')
+                        <p>Ujian Akhir</p>
+                        @break
+
+                    @default
+                        <span>Something went wrong, please try again</span>
+                        @break
+                @endswitch
               <table class="table table-bordered table-hover datatable" style="width: 100%">
                 <thead>
 	                <tr>
@@ -35,7 +67,23 @@ Nilai
                 		
                 		<td>
 
-			                {!! Form::open(['id' => 'formHapus' . $item->id, 'route' => ['materi.hapusNilai', $item->id], 'method' => 'delete']) !!}
+                            @switch($type)
+                                @case('materi')
+			                         {!! Form::open(['id' => 'formHapus' . $item->id, 'route' => ['materi.hapusNilai', $item->id], 'method' => 'delete']) !!}
+                                    @break
+
+                                @case('mid')
+                                     {!! Form::open(['id' => 'formHapus' . $item->id, 'route' => ['materi.hapusNilaiMid', $item->id], 'method' => 'delete']) !!}
+                                    @break
+
+                                @case('akhir')
+                                     {!! Form::open(['id' => 'formHapus' . $item->id, 'route' => ['materi.hapusNilaiAkhir', $item->id], 'method' => 'delete']) !!}
+                                    @break
+
+                                @default
+                                    <span>Something went wrong, please try again</span>
+                                    @break
+                            @endswitch
 
 			              		<button type="button" class="btn btn-danger btn-sm" onclick="hapus('{{ $item->id }}')"><i class="glyphicon glyphicon-trash"></i> Hapus</button>
 

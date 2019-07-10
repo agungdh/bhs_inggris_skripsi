@@ -9,11 +9,30 @@ Ujian
 	<div class="col-md-12">
         <div class="box box-primary">
             <div class="box-header with-border">
+                @switch($type)
+                    @case('materi')
+                        <p>{{$materi->unit}} - {{$materi->materi}}</p>
+                        {!! Form::open(['route' => ['materi.simpanUjian', $materi->id], 'role' => 'form']) !!}
+                        @break
+
+                    @case('mid')
+                        {!! Form::open(['route' => ['materi.simpanMid'], 'role' => 'form']) !!}
+                        <p>Ujian Mid</p>                        
+                        @break
+
+                    @case('akhir')
+                        {!! Form::open(['route' => ['materi.simpanAkhir'], 'role' => 'form']) !!}
+                        <p>Ujian Akhir</p>                        
+                        @break
+
+                    @default
+                        <span>Something went wrong, please try again</span>
+                        @break
+                @endswitch
                 <p>Siswa Waktu <span id="textSisaWaktu"></span></p>
             </div>
 
             <div class="box-body">
-                {!! Form::open(['route' => ['materi.simpanUjian', $materi->id], 'role' => 'form']) !!}
 
                 @php
                 $i = 1;

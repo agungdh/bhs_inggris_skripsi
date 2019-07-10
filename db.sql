@@ -3,7 +3,7 @@
 -- Host: 127.0.0.1	Database: bhs_inggris_skripsi
 -- ------------------------------------------------------
 -- Server version 	5.5.5-10.3.16-MariaDB
--- Date: Wed, 10 Jul 2019 08:25:20 +0700
+-- Date: Wed, 10 Jul 2019 11:44:02 +0700
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -15,6 +15,37 @@
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Table structure for table `akhir`
+--
+
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `akhir` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `waktu` datetime NOT NULL,
+  `id_user` int(11) NOT NULL,
+  `nilai` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `id_user` (`id_user`),
+  CONSTRAINT `akhir_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `user` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `akhir`
+--
+
+LOCK TABLES `akhir` WRITE;
+/*!40000 ALTER TABLE `akhir` DISABLE KEYS */;
+SET autocommit=0;
+/*!40000 ALTER TABLE `akhir` ENABLE KEYS */;
+UNLOCK TABLES;
+COMMIT;
+
+-- Dumped table `akhir` with 0 row(s)
+--
 
 --
 -- Table structure for table `files`
@@ -81,6 +112,37 @@ COMMIT;
 --
 
 --
+-- Table structure for table `mid`
+--
+
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `mid` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `waktu` datetime NOT NULL,
+  `id_user` int(11) NOT NULL,
+  `nilai` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `id_user` (`id_user`),
+  CONSTRAINT `mid_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `user` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `mid`
+--
+
+LOCK TABLES `mid` WRITE;
+/*!40000 ALTER TABLE `mid` DISABLE KEYS */;
+SET autocommit=0;
+/*!40000 ALTER TABLE `mid` ENABLE KEYS */;
+UNLOCK TABLES;
+COMMIT;
+
+-- Dumped table `mid` with 0 row(s)
+--
+
+--
 -- Table structure for table `soal`
 --
 
@@ -134,7 +196,7 @@ CREATE TABLE `ujian` (
   KEY `ujian_ibfk_2` (`id_user`),
   CONSTRAINT `ujian_ibfk_1` FOREIGN KEY (`id_materi`) REFERENCES `materi` (`id`),
   CONSTRAINT `ujian_ibfk_2` FOREIGN KEY (`id_user`) REFERENCES `user` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -144,12 +206,12 @@ CREATE TABLE `ujian` (
 LOCK TABLES `ujian` WRITE;
 /*!40000 ALTER TABLE `ujian` DISABLE KEYS */;
 SET autocommit=0;
-INSERT INTO `ujian` VALUES (9,'2019-07-09 10:00:58',3,5,10),(10,'2019-07-09 10:06:03',3,6,40);
+INSERT INTO `ujian` VALUES (14,'2019-07-10 11:22:27',3,5,35);
 /*!40000 ALTER TABLE `ujian` ENABLE KEYS */;
 UNLOCK TABLES;
 COMMIT;
 
--- Dumped table `ujian` with 2 row(s)
+-- Dumped table `ujian` with 1 row(s)
 --
 
 --
@@ -193,4 +255,4 @@ COMMIT;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on: Wed, 10 Jul 2019 08:25:20 +0700
+-- Dump completed on: Wed, 10 Jul 2019 11:44:02 +0700

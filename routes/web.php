@@ -1,14 +1,18 @@
 <?php
 
+Route::get('/materi/mid', 'MateriController@mid')->name('materi.mid');
+Route::post('/materi/mid', 'MateriController@simpanMid')->name('materi.simpanMid');
+Route::get('/materi/mid/nilai', 'MateriController@nilaiMid')->name('materi.nilaiMid');
+Route::delete('/materi/mid/nilai/{id}', 'MateriController@hapusNilaiMid')->name('materi.hapusNilaiMid');
+Route::get('/materi/akhir', 'MateriController@akhir')->name('materi.akhir');
+Route::post('/materi/akhir', 'MateriController@simpanAkhir')->name('materi.simpanAkhir');
+Route::get('/materi/akhir/nilai', 'MateriController@nilaiAkhir')->name('materi.nilaiAkhir');
+Route::delete('/materi/akhir/nilai/{id}', 'MateriController@hapusNilaiAkhir')->name('materi.hapusNilaiAkhir');
 Route::get('/materi/{id}/berkas', 'MateriController@berkas')->name('materi.berkas');
 Route::get('/materi/{id}/ujian', 'MateriController@ujian')->name('materi.ujian');
 Route::post('/materi/{id}/ujian', 'MateriController@simpanUjian')->name('materi.simpanUjian');
 Route::get('/materi/{id}/nilai', 'MateriController@nilai')->name('materi.nilai');
 Route::delete('/materi/{id}/nilai', 'MateriController@hapusNilai')->name('materi.hapusNilai');
-Route::get('/materi/mid', 'MateriController@mid')->name('materi.mid');
-Route::post('/materi/mid', 'MateriController@simpanMid')->name('materi.simpanMid');
-Route::get('/materi/akhir', 'MateriController@akhir')->name('materi.akhir');
-Route::post('/materi/akhir', 'MateriController@simpanAkhir')->name('materi.simpanAkhir');
 
 Route::get('/soal/{id_materi}', 'SoalController@index')->name('soal.index');
 Route::get('/soal/{id_materi}/create', 'SoalController@create')->name('soal.create');

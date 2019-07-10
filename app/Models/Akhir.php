@@ -4,9 +4,9 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Ujian extends Model
+class Akhir extends Model
 {
-    protected $table = 'ujian';
+    protected $table = 'akhir';
     public $timestamps = false;
 
     public function user()
@@ -14,8 +14,4 @@ class Ujian extends Model
         return $this->belongsTo('App\Models\User', 'id_user');
     }
 
-    public function materi()
-    {
-        return $this->belongsTo('App\Models\Materi', 'id_materi');
-    }
 }

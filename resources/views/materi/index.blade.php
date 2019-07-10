@@ -114,16 +114,46 @@ Materi
                     <tr>
                         <td>Mid</td>
                         @if(ADHhelper::getUserData()->level == 's')
+                        @php
+                            $nilai = DB::table('mid')->where([
+                                'id_user' => session('userID'),
+                            ])->first();
+                        @endphp
                         <td>{{$nilai ? $nilai->nilai : '-'}}</td>
+                        <td>
+                            <a class="btn btn-default btn-sm" href="{{route('materi.mid')}}">
+                              <i class="glyphicon glyphicon-question-sign"></i> Ujian Mid
+                            </a>
+                        </td>
+                        @else
+                        <td>
+                            <a class="btn btn-default btn-sm" href="{{route('materi.nilaiMid')}}">
+                              <i class="glyphicon glyphicon-question-sign"></i> Nilai
+                            </a>
+                        </td>
                         @endif
-                        <td>Mid</td>
                     </tr>
                     <tr>
                         <td>Akhir</td>
                         @if(ADHhelper::getUserData()->level == 's')
+                        @php
+                            $nilai = DB::table('akhir')->where([
+                                'id_user' => session('userID'),
+                            ])->first();
+                        @endphp
                         <td>{{$nilai ? $nilai->nilai : '-'}}</td>
+                        <td>
+                            <a class="btn btn-default btn-sm" href="{{route('materi.akhir')}}">
+                              <i class="glyphicon glyphicon-question-sign"></i> Ujian Akhir
+                            </a>
+                        </td>
+                        @else
+                        <td>
+                            <a class="btn btn-default btn-sm" href="{{route('materi.nilaiAkhir')}}">
+                              <i class="glyphicon glyphicon-question-sign"></i> Nilai
+                            </a>
+                        </td>
                         @endif
-                        <td>Akhir</td>
                     </tr>
                 </tbody>
               </table>
