@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>{{config('app.name')}}</title>
+  <title>English for Senior High School</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
 
@@ -34,17 +34,17 @@
 <body class="hold-transition login-page">
 <div class="login-box">
   <div class="login-logo">
-    <a href="{{route('main.index')}}"><b>SIPADI</b></a>
+    <a href="{{route('main.index')}}"><b>ENGLISH SHS</b></a>
   </div>
   <!-- /.login-logo -->
   <div class="login-box-body">
-    <p class="login-box-msg">{{config('app.name')}}</p>
+    <p class="login-box-msg">English for Senior High School</p>
 
     <form action="{{route('main.login')}}" method="post">
       @method('post')
       @csrf
       <div class="form-group has-feedback">
-        <input name="username" type="text" class="form-control" placeholder="Username / NPP">
+        <input name="username" type="text" class="form-control" placeholder="Username">
         <span class="glyphicon glyphicon-user form-control-feedback"></span>
       </div>
       <div class="form-group has-feedback">

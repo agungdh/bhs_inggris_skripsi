@@ -21,18 +21,6 @@ Profil
 
 				<div class="col-md-6">
 					@php
-					$class = $errors->has('npp') ? 'form-group has-error' : 'form-group';
-					$message = $errors->has('npp') ? '<span class="help-block">' . $errors->first('npp') . '</span>' : '';
-					@endphp
-					<div class="{{$class}}">
-						<label for="npp">NPP</label>
-						{!! Form::text('npp',null,['class'=> 'form-control','placeholder'=>'Isi NPP', 'id' => 'npp', 'readonly' => true]) !!}
-						{!! $message !!}
-					</div>
-				</div>
-
-				<div class="col-md-6">
-					@php
 					$class = $errors->has('nama') ? 'form-group has-error' : 'form-group';
 					$message = $errors->has('nama') ? '<span class="help-block">' . $errors->first('nama') . '</span>' : '';
 					@endphp
@@ -45,24 +33,12 @@ Profil
 				
 				<div class="col-md-6">
 					@php
-					$class = $errors->has('tipe') ? 'form-group has-error' : 'form-group';
-					$message = $errors->has('tipe') ? '<span class="help-block">' . $errors->first('tipe') . '</span>' : '';
+					$class = $errors->has('username') ? 'form-group has-error' : 'form-group';
+					$message = $errors->has('username') ? '<span class="help-block">' . $errors->first('username') . '</span>' : '';
 					@endphp
 					<div class="{{$class}}">
-						<label for="tipe">Tipe</label>
-						{!! Form::text('tipe',null,['class'=> 'form-control','placeholder'=>'Isi Tipe', 'id' => 'tipe', 'readonly' => true]) !!}
-						{!! $message !!}
-					</div>
-				</div>
-				
-				<div class="col-md-6">
-					@php
-					$class = $errors->has('level') ? 'form-group has-error' : 'form-group';
-					$message = $errors->has('level') ? '<span class="help-block">' . $errors->first('level') . '</span>' : '';
-					@endphp
-					<div class="{{$class}}">
-						<label for="level">Level</label>
-						{!! Form::text('level',null,['class'=> 'form-control','placeholder'=>'Isi Level', 'id' => 'level', 'readonly' => true]) !!}
+						<label for="username">Username</label>
+						{!! Form::text('username',null,['class'=> 'form-control','placeholder'=>'Isi Username', 'id' => 'username', 'readonly' => true]) !!}
 						{!! $message !!}
 					</div>
 				</div>
