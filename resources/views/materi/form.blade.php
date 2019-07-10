@@ -66,4 +66,15 @@
 		</div>
 	</div>
 
+	@php
+	$class = $errors->has('jumlah_pertanyaan_akhir') ? 'form-group has-error' : 'form-group';
+	$message = $errors->has('jumlah_pertanyaan_akhir') ? $errors->first('jumlah_pertanyaan_akhir') : '';
+	@endphp
+	<div class="{{$class}}">
+		<label for="jumlah_pertanyaan_akhir" data-toggle="tooltip" title="{{$message}}">Jumlah Pertanyaan Akhir</label>
+		<div data-toggle="tooltip" title="{{$message}}">
+			{!! Form::text('jumlah_pertanyaan_akhir',null,['class'=> 'form-control','placeholder'=>'Isi Jumlah Pertanyaan Akhir', 'id' => 'jumlah_pertanyaan_akhir']) !!}
+		</div>
+	</div>
+
 </div>

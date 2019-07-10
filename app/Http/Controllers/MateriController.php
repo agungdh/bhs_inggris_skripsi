@@ -48,9 +48,10 @@ class MateriController extends Controller
             'berkas' => 'required|file|mimes:pdf',
             'jumlah_pertanyaan_ujian' => 'required|numeric|min:0',
             'jumlah_pertanyaan_mid' => 'required|numeric|min:0',
+            'jumlah_pertanyaan_akhir' => 'required|numeric|min:0',
         ]);
 
-        $data = $request->only('unit', 'materi', 'deskripsi', 'jumlah_pertanyaan_ujian', 'jumlah_pertanyaan_mid');
+        $data = $request->only('unit', 'materi', 'deskripsi', 'jumlah_pertanyaan_ujian', 'jumlah_pertanyaan_mid', 'jumlah_pertanyaan_akhir');
         
         $id_materi = DB::table('materi')->insertGetId($data);
 
@@ -87,9 +88,10 @@ class MateriController extends Controller
             'berkas' => 'file|mimes:pdf',
             'jumlah_pertanyaan_ujian' => 'required|numeric|min:0',
             'jumlah_pertanyaan_mid' => 'required|numeric|min:0',
+            'jumlah_pertanyaan_akhir' => 'required|numeric|min:0',
         ]);
 
-        $data = $request->only('unit', 'materi', 'deskripsi', 'jumlah_pertanyaan_ujian', 'jumlah_pertanyaan_mid');
+        $data = $request->only('unit', 'materi', 'deskripsi', 'jumlah_pertanyaan_ujian', 'jumlah_pertanyaan_mid', 'jumlah_pertanyaan_akhir');
         
         Materi::where('id', $id)->update($data);
 
@@ -200,5 +202,31 @@ class MateriController extends Controller
             'message' => 'Berhasil Hapus Data',
             'class' => 'success',
         ]);  
+    }
+
+    public function mid()
+    {
+        // if (Ujian::where(['id_materi' => $id_materi, 'id_user' => session('userID')])->first()) {
+        //     return redirect()->route('materi.index')->with('alert', [
+        //         'title' => 'ERROR !!!',
+        //         'message' => 'Anda Sudah Ujian',
+        //         'class' => 'error',
+        //     ]);
+        // }
+
+        $materis = Materi::all();
+
+        $soals = [];
+        foreach ($materis as $materi) {
+            $tempSoals = Soal::where('id_materi', $materi->id)->inRandomOrder()->limit($materi->jumlah_pertanyaan_mid)->get();
+
+            foreach ($tempSoals as $tempSoal) {
+                $soals[] = $tempSoal;
+            }
+        }
+
+        dd(compact(['materis', 'soals']));
+
+        return view('materi.ujian', compact(['materi', 'soals']));
     }
 }

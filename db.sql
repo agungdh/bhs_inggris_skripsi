@@ -3,7 +3,7 @@
 -- Host: 127.0.0.1	Database: bhs_inggris_skripsi
 -- ------------------------------------------------------
 -- Server version 	5.5.5-10.3.16-MariaDB
--- Date: Tue, 09 Jul 2019 10:02:26 +0700
+-- Date: Wed, 10 Jul 2019 08:25:20 +0700
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -29,7 +29,7 @@ CREATE TABLE `files` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `id_materi` (`id_materi`),
   CONSTRAINT `files_ibfk_1` FOREIGN KEY (`id_materi`) REFERENCES `materi` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -39,12 +39,12 @@ CREATE TABLE `files` (
 LOCK TABLES `files` WRITE;
 /*!40000 ALTER TABLE `files` DISABLE KEYS */;
 SET autocommit=0;
-INSERT INTO `files` VALUES (4,5,'Motherboard - GIGABYTE Indonesia.pdf');
+INSERT INTO `files` VALUES (4,5,'Motherboard - GIGABYTE Indonesia.pdf'),(5,6,'Motherboard - GIGABYTE Indonesia.pdf'),(6,7,'Motherboard - GIGABYTE Indonesia.pdf');
 /*!40000 ALTER TABLE `files` ENABLE KEYS */;
 UNLOCK TABLES;
 COMMIT;
 
--- Dumped table `files` with 1 row(s)
+-- Dumped table `files` with 3 row(s)
 --
 
 --
@@ -60,8 +60,9 @@ CREATE TABLE `materi` (
   `unit` varchar(191) NOT NULL,
   `jumlah_pertanyaan_ujian` int(11) NOT NULL,
   `jumlah_pertanyaan_mid` int(11) NOT NULL,
+  `jumlah_pertanyaan_akhir` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -71,12 +72,12 @@ CREATE TABLE `materi` (
 LOCK TABLES `materi` WRITE;
 /*!40000 ALTER TABLE `materi` DISABLE KEYS */;
 SET autocommit=0;
-INSERT INTO `materi` VALUES (5,'Ini Unit 1','Ini Deskripsi Unit 1','1',20,5);
+INSERT INTO `materi` VALUES (5,'Ini Unit 1','Ini Deskripsi Unit 1','1',20,5,10),(6,'Unit 2','Ini Unit 2','2',15,10,15),(7,'Unit 3','ini adalah unit 3','3',15,0,12);
 /*!40000 ALTER TABLE `materi` ENABLE KEYS */;
 UNLOCK TABLES;
 COMMIT;
 
--- Dumped table `materi` with 1 row(s)
+-- Dumped table `materi` with 3 row(s)
 --
 
 --
@@ -98,7 +99,7 @@ CREATE TABLE `soal` (
   PRIMARY KEY (`id`),
   KEY `id_materi` (`id_materi`),
   CONSTRAINT `soal_ibfk_1` FOREIGN KEY (`id_materi`) REFERENCES `materi` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=64 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=106 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -108,12 +109,12 @@ CREATE TABLE `soal` (
 LOCK TABLES `soal` WRITE;
 /*!40000 ALTER TABLE `soal` DISABLE KEYS */;
 SET autocommit=0;
-INSERT INTO `soal` VALUES (17,5,'a','b','c','d','e','f','c'),(18,5,'a','b','c','d','e','f','c'),(19,5,'1','2','3','4','5','6','b'),(20,5,'a','b','c','d','e','f','c'),(21,5,'1','2','3','4','5','6','b'),(22,5,'a','b','c','d','e','f','c'),(23,5,'1','2','3','4','5','6','b'),(24,5,'a','b','c','d','e','f','c'),(25,5,'1','2','3','4','5','6','b'),(26,5,'a','b','c','d','e','f','c'),(27,5,'1','2','3','4','5','6','b'),(28,5,'a','b','c','d','e','f','c'),(29,5,'1','2','3','4','5','6','b'),(30,5,'a','b','c','d','e','f','c'),(31,5,'1','2','3','4','5','6','b'),(32,5,'a','b','c','d','e','f','c'),(33,5,'1','2','3','4','5','6','b'),(34,5,'a','b','c','d','e','f','c'),(35,5,'1','2','3','4','5','6','b'),(36,5,'a','b','c','d','e','f','c'),(37,5,'1','2','3','4','5','6','b'),(38,5,'a','b','c','d','e','f','c'),(39,5,'1','2','3','4','5','6','b'),(40,5,'a','b','c','d','e','f','c'),(41,5,'1','2','3','4','5','6','b'),(42,5,'a','b','c','d','e','f','c'),(43,5,'1','2','3','4','5','6','b'),(44,5,'a','b','c','d','e','f','c'),(45,5,'1','2','3','4','5','6','b'),(46,5,'a','b','c','d','e','f','c'),(47,5,'1','2','3','4','5','6','b'),(48,5,'a','b','c','d','e','f','c'),(49,5,'1','2','3','4','5','6','b'),(50,5,'a','b','c','d','e','f','c'),(51,5,'1','2','3','4','5','6','b'),(52,5,'a','b','c','d','e','f','c'),(53,5,'1','2','3','4','5','6','b'),(54,5,'a','b','c','d','e','f','c'),(55,5,'1','2','3','4','5','6','b'),(56,5,'a','b','c','d','e','f','c'),(57,5,'1','2','3','4','5','6','b'),(58,5,'a','b','c','d','e','f','c'),(59,5,'1','2','3','4','5','6','b'),(60,5,'a','b','c','d','e','f','c'),(61,5,'1','2','3','4','5','6','b'),(62,5,'a','b','c','d','e','f','c'),(63,5,'1','2','3','4','5','6','b');
+INSERT INTO `soal` VALUES (17,5,'a','b','c','d','e','f','c'),(18,5,'a','b','c','d','e','f','c'),(19,5,'1','2','3','4','5','6','b'),(20,5,'a','b','c','d','e','f','c'),(21,5,'1','2','3','4','5','6','b'),(22,5,'a','b','c','d','e','f','c'),(23,5,'1','2','3','4','5','6','b'),(24,5,'a','b','c','d','e','f','c'),(25,5,'1','2','3','4','5','6','b'),(26,5,'a','b','c','d','e','f','c'),(27,5,'1','2','3','4','5','6','b'),(28,5,'a','b','c','d','e','f','c'),(29,5,'1','2','3','4','5','6','b'),(30,5,'a','b','c','d','e','f','c'),(31,5,'1','2','3','4','5','6','b'),(32,5,'a','b','c','d','e','f','c'),(33,5,'1','2','3','4','5','6','b'),(34,5,'a','b','c','d','e','f','c'),(35,5,'1','2','3','4','5','6','b'),(36,5,'a','b','c','d','e','f','c'),(37,5,'1','2','3','4','5','6','b'),(38,5,'a','b','c','d','e','f','c'),(39,5,'1','2','3','4','5','6','b'),(40,5,'a','b','c','d','e','f','c'),(41,5,'1','2','3','4','5','6','b'),(42,5,'a','b','c','d','e','f','c'),(43,5,'1','2','3','4','5','6','b'),(44,5,'a','b','c','d','e','f','c'),(45,5,'1','2','3','4','5','6','b'),(46,5,'a','b','c','d','e','f','c'),(47,5,'1','2','3','4','5','6','b'),(48,5,'a','b','c','d','e','f','c'),(49,5,'1','2','3','4','5','6','b'),(50,5,'a','b','c','d','e','f','c'),(51,5,'1','2','3','4','5','6','b'),(52,5,'a','b','c','d','e','f','c'),(53,5,'1','2','3','4','5','6','b'),(54,5,'a','b','c','d','e','f','c'),(55,5,'1','2','3','4','5','6','b'),(56,5,'a','b','c','d','e','f','c'),(57,5,'1','2','3','4','5','6','b'),(58,5,'a','b','c','d','e','f','c'),(59,5,'1','2','3','4','5','6','b'),(60,5,'a','b','c','d','e','f','c'),(61,5,'1','2','3','4','5','6','b'),(62,5,'a','b','c','d','e','f','c'),(63,5,'1','2','3','4','5','6','b'),(64,6,'test aaa','12','4','14124','124','241','d'),(65,6,'test aaa','12','4','14124','124','241','d'),(66,6,'test aaa','12','4','14124','124','241','d'),(67,6,'test aaa','12','4','14124','124','241','d'),(68,6,'test aaa','12','4','14124','124','241','d'),(69,6,'test aaa','12','4','14124','124','241','d'),(70,6,'test aaa','12','4','14124','124','241','d'),(71,6,'test aaa','12','4','14124','124','241','d'),(72,6,'test aaa','12','4','14124','124','241','d'),(73,6,'test aaa','12','4','14124','124','241','d'),(74,6,'test aaa','12','4','14124','124','241','d'),(75,6,'test aaa','12','4','14124','124','241','d'),(76,6,'test aaa','12','4','14124','124','241','d'),(77,6,'test aaa','12','4','14124','124','241','d'),(78,6,'test aaa','12','4','14124','124','241','d'),(79,6,'test aaa','12','4','14124','124','241','d'),(80,6,'test aaa','12','4','14124','124','241','d'),(81,6,'test aaa','12','4','14124','124','241','d'),(82,6,'test aaa','12','4','14124','124','241','d'),(83,6,'test aaa','12','4','14124','124','241','d'),(84,6,'test aaa','12','4','14124','124','241','d'),(85,6,'test aaa','12','4','14124','124','241','d'),(86,6,'test aaa','12','4','14124','124','241','d'),(87,6,'test aaa','12','4','14124','124','241','d'),(88,6,'test aaa','12','4','14124','124','241','d'),(89,6,'test aaa','12','4','14124','124','241','d'),(90,6,'test aaa','12','4','14124','124','241','d'),(91,6,'test aaa','12','4','14124','124','241','d'),(92,6,'test aaa','12','4','14124','124','241','d'),(93,6,'test aaa','12','4','14124','124','241','d'),(94,6,'test aaa','12','4','14124','124','241','d'),(95,6,'test aaa','12','4','14124','124','241','d'),(96,6,'test aaa','12','4','14124','124','241','d'),(97,6,'test aaa','12','4','14124','124','241','d'),(98,6,'test aaa','12','4','14124','124','241','d'),(99,6,'test aaa','12','4','14124','124','241','d'),(100,6,'test aaa','12','4','14124','124','241','d'),(101,6,'test aaa','12','4','14124','124','241','d'),(102,6,'test aaa','12','4','14124','124','241','d'),(103,6,'test aaa','12','4','14124','124','241','d'),(104,6,'test aaa','12','4','14124','124','241','d'),(105,6,'test aaa','12','4','14124','124','241','d');
 /*!40000 ALTER TABLE `soal` ENABLE KEYS */;
 UNLOCK TABLES;
 COMMIT;
 
--- Dumped table `soal` with 47 row(s)
+-- Dumped table `soal` with 89 row(s)
 --
 
 --
@@ -133,7 +134,7 @@ CREATE TABLE `ujian` (
   KEY `ujian_ibfk_2` (`id_user`),
   CONSTRAINT `ujian_ibfk_1` FOREIGN KEY (`id_materi`) REFERENCES `materi` (`id`),
   CONSTRAINT `ujian_ibfk_2` FOREIGN KEY (`id_user`) REFERENCES `user` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -143,12 +144,12 @@ CREATE TABLE `ujian` (
 LOCK TABLES `ujian` WRITE;
 /*!40000 ALTER TABLE `ujian` DISABLE KEYS */;
 SET autocommit=0;
-INSERT INTO `ujian` VALUES (9,'2019-07-09 10:00:58',3,5,10);
+INSERT INTO `ujian` VALUES (9,'2019-07-09 10:00:58',3,5,10),(10,'2019-07-09 10:06:03',3,6,40);
 /*!40000 ALTER TABLE `ujian` ENABLE KEYS */;
 UNLOCK TABLES;
 COMMIT;
 
--- Dumped table `ujian` with 1 row(s)
+-- Dumped table `ujian` with 2 row(s)
 --
 
 --
@@ -192,4 +193,4 @@ COMMIT;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on: Tue, 09 Jul 2019 10:02:27 +0700
+-- Dump completed on: Wed, 10 Jul 2019 08:25:20 +0700

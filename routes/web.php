@@ -1,17 +1,14 @@
 <?php
 
-Route::resources([
-	'materi' => 'MateriController',
-	'user' => 'UserController',
-	'mid' => 'MidController',
-	'akhir' => 'AkhirController',
-]);
-
 Route::get('/materi/{id}/berkas', 'MateriController@berkas')->name('materi.berkas');
 Route::get('/materi/{id}/ujian', 'MateriController@ujian')->name('materi.ujian');
 Route::post('/materi/{id}/ujian', 'MateriController@simpanUjian')->name('materi.simpanUjian');
 Route::get('/materi/{id}/nilai', 'MateriController@nilai')->name('materi.nilai');
 Route::delete('/materi/{id}/nilai', 'MateriController@hapusNilai')->name('materi.hapusNilai');
+Route::get('/materi/mid', 'MateriController@mid')->name('materi.mid');
+Route::post('/materi/mid', 'MateriController@simpanMid')->name('materi.simpanMid');
+Route::get('/materi/akhir', 'MateriController@akhir')->name('materi.akhir');
+Route::post('/materi/akhir', 'MateriController@simpanAkhir')->name('materi.simpanAkhir');
 
 Route::get('/soal/{id_materi}', 'SoalController@index')->name('soal.index');
 Route::get('/soal/{id_materi}/create', 'SoalController@create')->name('soal.create');
@@ -19,6 +16,13 @@ Route::post('/soal/{id_materi}', 'SoalController@store')->name('soal.store');
 Route::get('/soal/{id}/edit', 'SoalController@edit')->name('soal.edit');
 Route::put('/soal/{id}', 'SoalController@update')->name('soal.update');
 Route::delete('/soal/{id}', 'SoalController@destroy')->name('soal.destroy');
+
+Route::resources([
+	'materi' => 'MateriController',
+	'user' => 'UserController',
+	'mid' => 'MidController',
+	'akhir' => 'AkhirController',
+]);
 
 // ===========================================================================
 
