@@ -10,6 +10,8 @@ Route::resources([
 Route::get('/materi/{id}/berkas', 'MateriController@berkas')->name('materi.berkas');
 Route::get('/materi/{id}/ujian', 'MateriController@ujian')->name('materi.ujian');
 Route::post('/materi/{id}/ujian', 'MateriController@simpanUjian')->name('materi.simpanUjian');
+Route::get('/materi/{id}/nilai', 'MateriController@nilai')->name('materi.nilai');
+Route::delete('/materi/{id}/nilai', 'MateriController@hapusNilai')->name('materi.hapusNilai');
 
 Route::get('/soal/{id_materi}', 'SoalController@index')->name('soal.index');
 Route::get('/soal/{id_materi}/create', 'SoalController@create')->name('soal.create');

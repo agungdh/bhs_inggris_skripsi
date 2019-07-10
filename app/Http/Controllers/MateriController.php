@@ -165,4 +165,32 @@ class MateriController extends Controller
 
         return redirect()->route('materi.index');
     }
+
+    public function nilai($id_materi)
+    {
+        $materi = Materi::find($id_materi);
+        $nilais = Ujian::where('id_materi', $materi->id)->with('user')->get();
+
+        return view('materi.nilai', compact(['materi', 'nilais']));
+    }
+
+    public function hapusNilai($id)
+    {
+        $ujian = Ujian::find($id);
+        try {
+            Ujian::where(['id' => $id])->delete();   
+        } catch (QueryException $exception) {
+            return redirect()->back()->with('alert', [
+                'title' => 'ERROR !!!',
+                'message' => config('app.debug') ? $exception->getMessage() : 'Something Went Wrong !!!',
+                'class' => 'error',
+            ]);        
+        }
+
+        return redirect()->route('materi.nilai', $ujian->id_materi)->with('alert', [
+            'title' => 'BERHASIL !!!',
+            'message' => 'Berhasil Hapus Data',
+            'class' => 'success',
+        ]);  
+    }
 }
