@@ -75,13 +75,7 @@ Materi
 
 			              		<button type="button" class="btn btn-danger btn-sm" onclick="hapus('{{ $item->id }}')"><i class="glyphicon glyphicon-trash"></i> Hapus</button>
                                 @else
-                                <a class="btn btn-default btn-sm"
-                                    @if(!$nilai)
-                                    href="{{route('materi.ujian', $item->id)}}"
-                                    @else
-                                    onclick="dahUjian()" 
-                                    @endif
-                                >
+                                <a class="btn btn-default btn-sm" href="{{route('materi.ujian', $item->id)}}">
                                   <i class="glyphicon glyphicon-question-sign"></i> Ujian
                                 </a>
                                 @endif
@@ -153,10 +147,6 @@ function hapus(id) {
 	}, function(){
 	  $("#formHapus" + id).submit();
 	});
-}
-
-function dahUjian() {
-    swal('ERROR !!!', 'Anda sudah ujian !!!', 'error');
 }
 </script>
 @endsection

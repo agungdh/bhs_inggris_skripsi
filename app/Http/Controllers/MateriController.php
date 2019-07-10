@@ -133,6 +133,14 @@ class MateriController extends Controller
 
     public function ujian($id_materi)
     {
+        if (Ujian::where(['id_materi' => $id_materi, 'id_user' => session('userID')])->first()) {
+            return redirect()->route('materi.index')->with('alert', [
+                'title' => 'ERROR !!!',
+                'message' => 'Anda Sudah Ujian',
+                'class' => 'error',
+            ]);
+        }
+
         $materi = Materi::find($id_materi);
         $soals = Soal::where('id_materi', $materi->id)->inRandomOrder()->limit($materi->jumlah_pertanyaan_ujian)->get();
 
