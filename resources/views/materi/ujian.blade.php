@@ -97,11 +97,11 @@ Ujian
         } else {
             swal({
               title: "Konfirmasi",
-              text: "Yakin submit jawaban ?",
+              text: "Yakin Kirim jawaban ?",
               type: "warning",
               showCancelButton: true,
               confirmButtonColor: "#DD6B55",
-              confirmButtonText: "Hapus",
+              confirmButtonText: "Kirim",
             }, function(){
               $("form").submit();
             });

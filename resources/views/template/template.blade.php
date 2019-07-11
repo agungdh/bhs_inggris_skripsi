@@ -162,7 +162,7 @@ if(session('login')) {
   <!-- /.content-wrapper -->
 
   <footer class="main-footer">
-    <strong>Copyright &copy; {{ date('Y') }} <a href="{{route('main.index')}}">SIPADI</a>.</strong> All rights
+    <strong>Copyright &copy; {{ date('Y') }} <a href="{{route('main.index')}}">ESHS</a>.</strong> All rights
     reserved.
   </footer>
 </div>
