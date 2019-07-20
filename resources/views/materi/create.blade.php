@@ -11,7 +11,7 @@ Materi
 @section('content')
 <div class="row">
 	<div class="col-md-12">
-		<div class="box box-primary">
+        <div class="box animated jackInTheBox box-primary" style="box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);">
 			<div class="box-header with-border">
 				<h3 class="box-title">Tambah Materi</h3>
 			</div>

@@ -7,7 +7,7 @@ Ujian
 @section('content')
 <div class="row">
 	<div class="col-md-12">
-        <div class="box box-primary">
+<div class="box  box-primary animated slideInLeft" style="box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.50); border-radius: 10px;">
             <div class="box-header with-border">
                 @switch($type)
                     @case('materi')
@@ -65,20 +65,22 @@ Ujian
                     shuffle($pertanyaans);
                     @endphp
 
-                    <p>{{$i}}. {{$soal->pertanyaan}}</p>
+                    <div class="col-md-6">
+                        <p>{{$i}}. {{$soal->pertanyaan}}</p>
 
-                    <ol type="a">
-                        @foreach($pertanyaans as $pertanyaan)
-                        <li><input type="radio" name="soal[{{$pertanyaan['id_soal']}}]" value="{{$pertanyaan['value']}}">{{$pertanyaan['jawaban']}}</li>
-                        @endforeach
-                    </ol>
+                        <ol type="a">
+                            @foreach($pertanyaans as $pertanyaan)
+                            <li><input type="radio" name="soal[{{$pertanyaan['id_soal']}}]" value="{{$pertanyaan['value']}}">{{$pertanyaan['jawaban']}}</li>
+                            @endforeach
+                        </ol>                        
+                    </div>
 
                     @php
                     $i++;
                     @endphp
                 @endforeach
 
-                <button type="button" onclick="cekSubmit()">Submit</button>
+                <button class="btn btn-success" type="button" onclick="cekSubmit()">Kirim Jawaban</button>
 
                 {!! Form::close() !!}
             </div>

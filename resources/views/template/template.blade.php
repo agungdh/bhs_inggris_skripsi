@@ -9,7 +9,7 @@ if(session('login')) {
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>English for Senior High School</title>
+  <title>English Reading Material for Senior High School</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
 
@@ -27,6 +27,8 @@ if(session('login')) {
   <link rel="stylesheet" href="{{asset('storage/assets')}}/AdminLTE/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
   <!-- SweetAlert -->
   <link rel="stylesheet" href="{{asset('storage/assets')}}/sweetalert/dist/sweetalert.css">
+
+  <link rel="stylesheet" href="{{asset('storage/assets')}}/animate/animate.css">  
   <!-- Select2 -->
   <link rel="stylesheet" href="{{asset('storage/assets')}}/AdminLTE/bower_components/select2/dist/css/select2.min.css">
   <!-- bootstrap datepicker -->
@@ -40,7 +42,7 @@ if(session('login')) {
   <!-- AdminLTE Skins. We have chosen the skin-blue for this starter
         page. However, you can choose any other skin. Make sure you
         apply the skin class to the body tag so the changes take effect. -->
-  <link rel="stylesheet" href="{{asset('storage/assets')}}/AdminLTE/dist/css/skins/skin-blue.min.css">
+  <link rel="stylesheet" href="{{asset('storage/assets')}}/AdminLTE/dist/css/skins/skin-red.min.css">
 
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -63,7 +65,7 @@ if(session('login')) {
 
   <meta name="csrf-token" content="{{ csrf_token() }}">
 </head>
-<body class="hold-transition skin-blue fixed sidebar-mini">
+<body class="hold-transition skin-red fixed sidebar-mini">
 <!-- Site wrapper -->
 <div class="wrapper">
 
@@ -71,9 +73,9 @@ if(session('login')) {
     <!-- Logo -->
     <a href="{{ route('main.index') }}" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
-      <span class="logo-mini"><b>ESHS</b></span>
+      <span class="logo-mini"><b>ERM</b></span>
       <!-- logo for regular state and mobile devices -->
-      <span class="logo-lg"><b>English SHS</b></span>
+      <span class="logo-lg"><b>English RM</b></span>
     </a>
     <!-- Header Navbar: style can be found in header.less -->
     <nav class="navbar navbar-static-top">
@@ -162,7 +164,7 @@ if(session('login')) {
   <!-- /.content-wrapper -->
 
   <footer class="main-footer">
-    <strong>Copyright &copy; {{ date('Y') }} <a href="{{route('main.index')}}">ESHS</a>.</strong> All rights
+    <strong>Copyright &copy; {{ date('Y') }} <a href="{{route('main.index')}}">ERM</a>.</strong> All rights
     reserved.
   </footer>
 </div>

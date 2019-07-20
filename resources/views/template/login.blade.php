@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>English for Senior High School</title>
+  <title>English Reading Material for Senior High School</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
 
@@ -20,6 +20,8 @@
   <link rel="stylesheet" href="{{asset('storage/assets')}}/AdminLTE/dist/css/AdminLTE.min.css">
   <!-- SweetAlert -->
   <link rel="stylesheet" href="{{asset('storage/assets')}}/sweetalert/dist/sweetalert.css">
+
+  <link rel="stylesheet" href="{{asset('storage/assets')}}/animate/animate.css">
   
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -31,14 +33,15 @@
   <!-- Google Font -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 </head>
-<body class="hold-transition login-page">
-<div class="login-box">
+<body class="hold-transition login-page" style="background-color: green; background-image: url('{{asset("")}}/storage/assets/animate/background.jpg'); background-size: cover;">
+
+<div class="login-box animated jackInTheBox" style="background-color: red;box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.50); border-radius: 10px; ">
   <div class="login-logo">
-    <a href="{{route('main.index')}}"><b>ENGLISH SHS</b></a>
+    <a href="{{route('main.index')}}"><b style="color: #fff">ENGLISH READING MATERIAL</b></a>
   </div>
   <!-- /.login-logo -->
-  <div class="login-box-body">
-    <p class="login-box-msg">English for Senior High School</p>
+  <div class="login-box-body" style="">
+    <p class="login-box-msg">English Reading Material for Senior High School</p>
 
     <form action="{{route('main.login')}}" method="post">
       @method('post')
@@ -58,8 +61,14 @@
         <!-- /.col -->
       </div>
     </form>
+
   </div>
   <!-- /.login-box-body -->
+
+    <div style="visibility:hidden"> 
+      <embed autoplay="true" src="{{asset('storage/assets')}}/animate/english.mp3"> </embed> 
+    </div>
+
 </div>
 <!-- /.login-box -->
 

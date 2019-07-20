@@ -32,7 +32,7 @@
 			{!! Form::select('level',[
 					'a' => 'Administrator',
 					's' => 'Siswa',
-				],null,['class'=> 'form-control select2','placeholder'=>'Pilih Level','id'=>'level']) !!}
+				],null,['class'=> 'form-control select2','placeholder'=>'Pilih Level','id'=>'level','style'=>'width: 100%']) !!}
 		</div>
 	</div>
 

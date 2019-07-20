@@ -38,7 +38,7 @@ class MainController extends Controller
 
     function index() {
 		if (session('login') == true) {
-			return redirect()->route('materi.index');
+			return view('materi.depan');
 		} else {
 			return view('template.login');
 		}

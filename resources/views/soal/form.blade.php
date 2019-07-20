@@ -73,7 +73,7 @@
 	<div class="{{$class}}">
 		<label for="kunci" data-toggle="tooltip" title="{{$message}}">Kunci</label>
 		<div data-toggle="tooltip" title="{{$message}}">
-			{!! Form::select('kunci',$kuncis,null,['class'=> 'form-control select2','placeholder'=>'Pilih Kunci','id'=>'kunci']) !!}
+			{!! Form::select('kunci',$kuncis,null,['class'=> 'form-control select2','placeholder'=>'Pilih Kunci','id'=>'kunci','style'=>'width: 100%']) !!}
 		</div>
 	</div>
 		
