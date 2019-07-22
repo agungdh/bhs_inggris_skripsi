@@ -149,12 +149,18 @@ class MateriController extends Controller
         $materi = Materi::find($id_materi);
         $narasis = Narasi::where('id_materi', $materi->id)->inRandomOrder()->limit(5)->get();
         $soals = [];
+        $narasis_keys = [];
+        $narasis_keys_reversed = [];
+        $i = 0;
         foreach ($narasis as $narasi) {
+            $narasis_keys[$i] = $narasi->id;
+            $narasis_keys_reversed[$narasi->id] = $i;
             $soals[$narasi->id] = Soal::where('id_cerita', $narasi->id)->inRandomOrder()->limit(5)->get();
+            $i++;
         }
         $type = 'materi';
-
-        return view('materi.ujian', compact(['materi', 'soals', 'type', 'narasis']));
+        dd(compact(['materi', 'soals', 'type', 'narasis', 'narasis_keys', 'narasis_keys_reversed']));
+        return view('materi.ujian', compact(['materi', 'soals', 'type', 'narasis', 'narasis_keys', 'narasis_keys_reversed']));
     }
 
     public function simpanUjian(Request $request, $id_materi)
