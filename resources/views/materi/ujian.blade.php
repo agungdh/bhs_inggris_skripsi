@@ -34,53 +34,65 @@ Ujian
 
             <div class="box-body">
 
-                @php
-                $i = 1;
-                @endphp
-                @foreach($soals as $soal)
+                @foreach($narasis as $narasi)
+                    <div id="narasi__{{$narasi->id}}">
 
-                    @php
-                    $pertanyaans = [];
+                        <textarea style="resize: none;" rows="10" readonly class="form-control">{{$narasi->isi_cerita}}</textarea>
 
-                    $pertanyaans[0]['id_soal'] = $soal->id;
-                    $pertanyaans[0]['value'] = 'a';
-                    $pertanyaans[0]['jawaban'] = $soal->jawaban_a;
+                        @php
+                        $i = 1;
+                        @endphp
+                        @foreach($soals[$narasi->id] as $soal)
 
-                    $pertanyaans[1]['id_soal'] = $soal->id;
-                    $pertanyaans[1]['value'] = 'b';
-                    $pertanyaans[1]['jawaban'] = $soal->jawaban_b;
+                            @php
+                            $pertanyaans = [];
 
-                    $pertanyaans[2]['id_soal'] = $soal->id;
-                    $pertanyaans[2]['value'] = 'c';
-                    $pertanyaans[2]['jawaban'] = $soal->jawaban_c;
+                            $pertanyaans[0]['id_soal'] = $soal->id;
+                            $pertanyaans[0]['value'] = 'a';
+                            $pertanyaans[0]['jawaban'] = $soal->jawaban_a;
 
-                    $pertanyaans[3]['id_soal'] = $soal->id;
-                    $pertanyaans[3]['value'] = 'd';
-                    $pertanyaans[3]['jawaban'] = $soal->jawaban_d;
+                            $pertanyaans[1]['id_soal'] = $soal->id;
+                            $pertanyaans[1]['value'] = 'b';
+                            $pertanyaans[1]['jawaban'] = $soal->jawaban_b;
 
-                    $pertanyaans[4]['id_soal'] = $soal->id;
-                    $pertanyaans[4]['value'] = 'e';
-                    $pertanyaans[4]['jawaban'] = $soal->jawaban_e;
+                            $pertanyaans[2]['id_soal'] = $soal->id;
+                            $pertanyaans[2]['value'] = 'c';
+                            $pertanyaans[2]['jawaban'] = $soal->jawaban_c;
 
-                    shuffle($pertanyaans);
-                    @endphp
+                            $pertanyaans[3]['id_soal'] = $soal->id;
+                            $pertanyaans[3]['value'] = 'd';
+                            $pertanyaans[3]['jawaban'] = $soal->jawaban_d;
 
-                    <div class="col-md-6">
-                        <p>{{$i}}. {{$soal->pertanyaan}}</p>
+                            $pertanyaans[4]['id_soal'] = $soal->id;
+                            $pertanyaans[4]['value'] = 'e';
+                            $pertanyaans[4]['jawaban'] = $soal->jawaban_e;
 
-                        <ol type="a">
-                            @foreach($pertanyaans as $pertanyaan)
-                            <li><input type="radio" name="soal[{{$pertanyaan['id_soal']}}]" value="{{$pertanyaan['value']}}">{{$pertanyaan['jawaban']}}</li>
-                            @endforeach
-                        </ol>                        
+                            shuffle($pertanyaans);
+                            @endphp
+
+                            <div class="col-md-12">
+                                <p>{{$i}}. {{$soal->pertanyaan}}</p>
+
+                                <ol type="a">
+                                    @foreach($pertanyaans as $pertanyaan)
+                                    <li><input type="radio" name="soal[{{$pertanyaan['id_soal']}}]" value="{{$pertanyaan['value']}}">{{$pertanyaan['jawaban']}}</li>
+                                    @endforeach
+                                </ol>                        
+                            </div>
+
+                            @php
+                            $i++;
+                            @endphp
+                        @endforeach
                     </div>
-
-                    @php
-                    $i++;
-                    @endphp
                 @endforeach
 
-                <button class="btn btn-success" type="button" onclick="cekSubmit()">Kirim Jawaban</button>
+                <div style="text-align: center;">
+                    <button class="btn btn-primary" type="button" onclick="prev()" id="btnPrev"><</button>
+                    <button class="btn btn-primary" type="button" onclick="next()" id="btnNext">></button>
+                    <br>
+                    <button class="btn btn-success" type="button" onclick="cekSubmit()">Kirim Jawaban</button>
+                </div>
 
                 {!! Form::close() !!}
             </div>
@@ -91,6 +103,14 @@ Ujian
 
 @section('js')
 <script type="text/javascript">
+    $(function() {
+      @foreach($narasis as $narasi)
+      $("#narasi__{{$narasi->id}}").hide();
+      @endforeach
+
+      $("#narasi__{{$narasis[0]->id}}").show();
+    });
+
     function cekSubmit() {
         var data = $("form").serializeArray();
 

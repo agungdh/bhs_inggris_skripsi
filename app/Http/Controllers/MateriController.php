@@ -7,6 +7,7 @@ use Illuminate\Database\QueryException;
 
 use App\Models\Materi;
 use App\Models\Berkas;
+use App\Models\Narasi;
 use App\Models\Soal;
 use App\Models\Ujian;
 use App\Models\Mid;
@@ -146,10 +147,14 @@ class MateriController extends Controller
         }
 
         $materi = Materi::find($id_materi);
-        $soals = Soal::where('id_materi', $materi->id)->inRandomOrder()->limit($materi->jumlah_pertanyaan_ujian)->get();
+        $narasis = Narasi::where('id_materi', $materi->id)->inRandomOrder()->limit(5)->get();
+        $soals = [];
+        foreach ($narasis as $narasi) {
+            $soals[$narasi->id] = Soal::where('id_cerita', $narasi->id)->inRandomOrder()->limit(5)->get();
+        }
         $type = 'materi';
 
-        return view('materi.ujian', compact(['materi', 'soals', 'type']));
+        return view('materi.ujian', compact(['materi', 'soals', 'type', 'narasis']));
     }
 
     public function simpanUjian(Request $request, $id_materi)
