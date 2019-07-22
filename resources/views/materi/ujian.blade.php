@@ -34,14 +34,14 @@ Ujian
 
             <div class="box-body">
 
+                @php
+                $i = 1;
+                @endphp
                 @foreach($narasis as $narasi)
                     <div id="narasi__{{$narasi->id}}">
 
                         <textarea style="resize: none;" rows="10" readonly class="form-control">{{$narasi->isi_cerita}}</textarea>
 
-                        @php
-                        $i = 1;
-                        @endphp
                         @foreach($soals[$narasi->id] as $soal)
 
                             @php
@@ -103,13 +103,57 @@ Ujian
 
 @section('js')
 <script type="text/javascript">
-    $(function() {
-      @foreach($narasis as $narasi)
-      $("#narasi__{{$narasi->id}}").hide();
-      @endforeach
+    var narasis_keys = JSON.parse('{{json_encode($narasis_keys)}}');
+    var current_narasis_key = 0;
 
-      $("#narasi__{{$narasis[0]->id}}").show();
+    $(function() {
+        narasis_keys.forEach(function(data) {
+            $("#narasi__" + data).hide();
+        });
+
+        $("#narasi__" + narasis_keys[current_narasis_key]).show();
+
+        configButton();
     });
+
+    function configButton() {
+        if (current_narasis_key == 0) {
+            $("#btnPrev").prop('class', 'btn btn-default');
+        } else {
+            $("#btnPrev").prop('class', 'btn btn-primary');
+        }
+
+        if (current_narasis_key == narasis_keys.length - 1) {
+            $("#btnNext").prop('class', 'btn btn-default');
+        } else {
+            $("#btnNext").prop('class', 'btn btn-primary');
+        }
+    }
+
+    function prev() {
+        if (current_narasis_key != 0) {
+            $("#narasi__" + narasis_keys[current_narasis_key]).hide();
+
+            current_narasis_key--;
+
+            $("#narasi__" + narasis_keys[current_narasis_key]).show();
+
+            configButton();
+        }
+
+    }
+
+    function next() {
+        if (current_narasis_key != narasis_keys.length - 1) {
+            $("#narasi__" + narasis_keys[current_narasis_key]).hide();
+
+            current_narasis_key++;
+
+            $("#narasi__" + narasis_keys[current_narasis_key]).show();
+
+            configButton();
+        }
+    }
 
     function cekSubmit() {
         var data = $("form").serializeArray();
@@ -130,7 +174,7 @@ Ujian
         }
     }
 
-    var countDownDate = new Date().addHours(2).getTime();
+    var countDownDate = new Date().addMinutes({{$materi->durasi}}).getTime();
     var x = setInterval(function() {
     var now = new Date().getTime();
 

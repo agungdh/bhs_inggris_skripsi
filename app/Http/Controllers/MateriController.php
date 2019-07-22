@@ -159,7 +159,7 @@ class MateriController extends Controller
             $i++;
         }
         $type = 'materi';
-        dd(compact(['materi', 'soals', 'type', 'narasis', 'narasis_keys', 'narasis_keys_reversed']));
+        
         return view('materi.ujian', compact(['materi', 'soals', 'type', 'narasis', 'narasis_keys', 'narasis_keys_reversed']));
     }
 
@@ -178,7 +178,7 @@ class MateriController extends Controller
             }
         }
 
-        $nilai = (int)($benar / $materi->jumlah_pertanyaan_ujian * 100);
+        $nilai = (int)($benar / ($materi->jumlah_narasi * 5) * 100);
 
         Ujian::insert([
             'id_user' => session('userID'),
