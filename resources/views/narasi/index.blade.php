@@ -32,7 +32,7 @@ Narasi
                 <tbody>
                   @foreach($narasis as $item)
                   <tr>
-                    <td>{{$item->isi_cerita}}</td>
+                    <td>{{substr($item->isi_cerita,0,50).'...'}}</td>
                     @php
                     $jumlah_soal = count($item->soals);
 
