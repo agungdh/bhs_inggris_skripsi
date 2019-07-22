@@ -3,7 +3,7 @@
 -- Host: 127.0.0.1	Database: english
 -- ------------------------------------------------------
 -- Server version 	5.5.5-10.3.13-MariaDB-2
--- Date: Mon, 22 Jul 2019 22:45:42 +0700
+-- Date: Mon, 22 Jul 2019 23:22:39 +0700
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -60,7 +60,7 @@ CREATE TABLE `cerita` (
   `isi_cerita` longtext NOT NULL,
   PRIMARY KEY (`id`),
   KEY `id_materi` (`id_materi`)
-) ENGINE=InnoDB AUTO_INCREMENT=111 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=112 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -70,11 +70,12 @@ CREATE TABLE `cerita` (
 LOCK TABLES `cerita` WRITE;
 /*!40000 ALTER TABLE `cerita` DISABLE KEYS */;
 SET autocommit=0;
+INSERT INTO `cerita` VALUES (111,11,'ini adalah narasi');
 /*!40000 ALTER TABLE `cerita` ENABLE KEYS */;
 UNLOCK TABLES;
 COMMIT;
 
--- Dumped table `cerita` with 0 row(s)
+-- Dumped table `cerita` with 1 row(s)
 --
 
 --
@@ -128,7 +129,7 @@ CREATE TABLE `soal` (
   PRIMARY KEY (`id`),
   KEY `id_cerita` (`id_cerita`),
   CONSTRAINT `soal_ibfk_2` FOREIGN KEY (`id_cerita`) REFERENCES `cerita` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=117 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=122 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -138,11 +139,12 @@ CREATE TABLE `soal` (
 LOCK TABLES `soal` WRITE;
 /*!40000 ALTER TABLE `soal` DISABLE KEYS */;
 SET autocommit=0;
+INSERT INTO `soal` VALUES (117,111,'a','1','2','3','4','5','a'),(118,111,'b','1','2','3','4','5','b'),(119,111,'c','1','2','3','4','5','c'),(120,111,'d','1','2','3','4','5','d'),(121,111,'e','1','2','3','4','5','e');
 /*!40000 ALTER TABLE `soal` ENABLE KEYS */;
 UNLOCK TABLES;
 COMMIT;
 
--- Dumped table `soal` with 0 row(s)
+-- Dumped table `soal` with 5 row(s)
 --
 
 --
@@ -219,4 +221,4 @@ COMMIT;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on: Mon, 22 Jul 2019 22:45:42 +0700
+-- Dump completed on: Mon, 22 Jul 2019 23:22:39 +0700
