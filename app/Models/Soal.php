@@ -9,9 +9,9 @@ class Soal extends Model
     protected $table = 'soal';
     public $timestamps = false;
 
-    public function materi()
+    public function narasi()
     {
-        return $this->belongsTo('App\Models\Materi', 'id_materi');
+        return $this->belongsTo('App\Models\Narasi', 'id_cerita');
     }
 
 }

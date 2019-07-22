@@ -27,4 +27,6 @@ Soal
 		</div>
 	</div>
 </div>
+
+@include('soal.narasi')
 @endsection

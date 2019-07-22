@@ -14,12 +14,19 @@ Route::post('/materi/{id}/ujian', 'MateriController@simpanUjian')->name('materi.
 Route::get('/materi/{id}/nilai', 'MateriController@nilai')->name('materi.nilai');
 Route::delete('/materi/{id}/nilai', 'MateriController@hapusNilai')->name('materi.hapusNilai');
 
-Route::get('/soal/{id_materi}', 'SoalController@index')->name('soal.index');
-Route::get('/soal/{id_materi}/create', 'SoalController@create')->name('soal.create');
-Route::post('/soal/{id_materi}', 'SoalController@store')->name('soal.store');
+Route::get('/soal/{id_narasi}', 'SoalController@index')->name('soal.index');
+Route::get('/soal/{id_narasi}/create', 'SoalController@create')->name('soal.create');
+Route::post('/soal/{id_narasi}', 'SoalController@store')->name('soal.store');
 Route::get('/soal/{id}/edit', 'SoalController@edit')->name('soal.edit');
 Route::put('/soal/{id}', 'SoalController@update')->name('soal.update');
 Route::delete('/soal/{id}', 'SoalController@destroy')->name('soal.destroy');
+
+Route::get('/narasi/{id_materi}', 'NarasiController@index')->name('narasi.index');
+Route::get('/narasi/{id_materi}/create', 'NarasiController@create')->name('narasi.create');
+Route::post('/narasi/{id_materi}', 'NarasiController@store')->name('narasi.store');
+Route::get('/narasi/{id}/edit', 'NarasiController@edit')->name('narasi.edit');
+Route::put('/narasi/{id}', 'NarasiController@update')->name('narasi.update');
+Route::delete('/narasi/{id}', 'NarasiController@destroy')->name('narasi.destroy');
 
 Route::resources([
 	'materi' => 'MateriController',

@@ -65,6 +65,10 @@ Materi
                                   <i class="glyphicon glyphicon-question-sign"></i> Soal
                                 </a>
 
+                                <a class="btn btn-default btn-sm" href="{{route('narasi.index', $item->id)}}">
+                                  <i class="glyphicon glyphicon-question-sign"></i> Narasi
+                                </a>
+
                                 <a class="btn btn-default btn-sm" href="{{route('materi.nilai', $item->id)}}">
                                   <i class="glyphicon glyphicon-question-sign"></i> Nilai
                                 </a>

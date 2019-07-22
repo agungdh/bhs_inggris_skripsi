@@ -17,8 +17,7 @@ Soal
             </div>
             <!-- /.box-header -->
             <div class="box-body">
-              <p>{{$materi->unit}} - {{$materi->materi}}</p>
-            	<a class="btn btn-success btn-sm" href="{{route('soal.create', $materi->id)}}">
+            	<a class="btn btn-success btn-sm" href="{{route('soal.create', $narasi->id)}}">
                   <i class="glyphicon glyphicon-plus"></i> Tambah
                 </a><br><br>
               <table class="table table-bordered table-hover datatable" style="width: 100%">
@@ -108,6 +107,8 @@ Soal
           </div>
 	</div>
 </div>
+
+@include('soal.narasi')
 @endsection
 
 @section('js')

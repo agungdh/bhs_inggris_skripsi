@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Database\QueryException;
 
 use App\Models\Soal;
-use App\Models\Materi;
+use App\Models\Narasi;
 
 use ADHhelper;
 
@@ -16,17 +16,19 @@ use Validator;
 class SoalController extends Controller
 {
 
-    public function index($id_materi)
+    public function index($id_cerita)
     {
-        $materi = Materi::with('soals')->find($id_materi);
-        $soals = $materi->soals;
+        $narasi = Narasi::with('soals')->find($id_cerita);
+        $materi = $narasi->materi;
+        $soals = $narasi->soals;
 
-        return view('soal.index', compact(['materi', 'soals']));
+        return view('soal.index', compact(['narasi', 'materi', 'soals']));
     }
 
-    public function create($id_materi)
+    public function create($id_cerita)
     {
-        $materi = Materi::find($id_materi);
+        $narasi = Narasi::find($id_cerita);
+        $materi = $narasi->materi;
         $kuncis = [
             'a' => 'A',
             'b' => 'B',
@@ -35,10 +37,10 @@ class SoalController extends Controller
             'e' => 'E',
         ];
 
-        return view('soal.create', compact(['materi', 'kuncis']));
+        return view('soal.create', compact(['materi', 'kuncis', 'narasi']));
     }
 
-    public function store(Request $request, $id_materi)
+    public function store(Request $request, $id_cerita)
     {
         $request->validate([
             'pertanyaan' => 'required',
@@ -51,11 +53,11 @@ class SoalController extends Controller
         ]);
 
         $data = $request->only('pertanyaan','jawaban_a','jawaban_b','jawaban_c','jawaban_d','jawaban_e','kunci');
-        $data['id_materi'] = $id_materi;
+        $data['id_cerita'] = $id_cerita;
         
         DB::table('soal')->insert($data);
 
-        return redirect()->route('soal.index', $id_materi)->with('alert', [
+        return redirect()->route('soal.index', $id_cerita)->with('alert', [
             'title' => 'BERHASIL !!!',
             'message' => 'Berhasil Tambah Data',
             'class' => 'success',
@@ -65,7 +67,8 @@ class SoalController extends Controller
     public function edit($id)
     {
         $soal = Soal::find($id);
-        $materi = $soal->materi;
+        $narasi = $soal->narasi;
+        $materi = $narasi->materi;
         $kuncis = [
             'a' => 'A',
             'b' => 'B',
@@ -74,7 +77,7 @@ class SoalController extends Controller
             'e' => 'E',
         ];
 
-        return view('soal.edit', compact(['soal', 'materi', 'kuncis']));
+        return view('soal.edit', compact(['soal', 'materi', 'kuncis', 'narasi']));
     }
 
     public function update(Request $request, $id)
@@ -92,11 +95,11 @@ class SoalController extends Controller
         ]);
 
         $data = $request->only('pertanyaan','jawaban_a','jawaban_b','jawaban_c','jawaban_d','jawaban_e','kunci');
-        $data['id_materi'] = $soal->id_materi;
+        $data['id_cerita'] = $soal->id_cerita;
 
         Soal::where(['id' => $id])->update($data);
 
-        return redirect()->route('soal.index', $soal->id_materi)->with('alert', [
+        return redirect()->route('soal.index', $soal->id_cerita)->with('alert', [
             'title' => 'BERHASIL !!!',
             'message' => 'Berhasil Ubah Data',
             'class' => 'success',
@@ -105,10 +108,10 @@ class SoalController extends Controller
 
     public function destroy($id)
     {     
-        $sewaKendaraan = SewaKendaraan::find($id);
+        $soal = Soal::find($id);
 
         try {
-            SewaKendaraan::where(['id' => $id])->delete();   
+            Soal::where(['id' => $id])->delete();   
         } catch (QueryException $exception) {
             return redirect()->back()->with('alert', [
                 'title' => 'ERROR !!!',
@@ -117,7 +120,7 @@ class SoalController extends Controller
             ]);        
         }
 
-        return redirect()->route('soal.index', $sewaKendaraan->id_kendaraan)->with('alert', [
+        return redirect()->route('soal.index', $soal->id_cerita)->with('alert', [
             'title' => 'BERHASIL !!!',
             'message' => 'Berhasil Hapus Data',
             'class' => 'success',
