@@ -33,7 +33,16 @@ Narasi
                 	@foreach($narasis as $item)
                 	<tr>
                 		<td>{{$item->isi_cerita}}</td>
-                    <td>{{count($item->soals)}}</td>
+                    @php
+                    $jumlah_soal = count($item->soals);
+
+                    if ($jumlah_soal < 5) {
+                      $color = 'red';
+                    } else {
+                      $color = 'green';
+                    }
+                    @endphp
+                    <td style="color: {{$color}};">{{$jumlah_soal}}</td>
                 		<td>
 
 			                {!! Form::open(['id' => 'formHapus' . $item->id, 'route' => ['narasi.destroy', $item->id], 'method' => 'delete']) !!}

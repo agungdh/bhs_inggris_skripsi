@@ -61,10 +61,6 @@ Materi
 				                </a>
 
                                 @if(ADHhelper::getUserData()->level == 'a')
-                                <a class="btn btn-default btn-sm" href="{{route('soal.index', $item->id)}}">
-                                  <i class="glyphicon glyphicon-question-sign"></i> Soal
-                                </a>
-
                                 <a class="btn btn-default btn-sm" href="{{route('narasi.index', $item->id)}}">
                                   <i class="glyphicon glyphicon-question-sign"></i> Narasi
                                 </a>
@@ -94,77 +90,6 @@ Materi
             <!-- /.box-body -->
           </div>
 	</div>
-</div>
-
-<div class="row">
-    <div class="col-md-12">
-        <div class="box animated slideInRight box-primary" style="box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);">
-            <div class="box-header">
-              <h3 class="box-title">Data Ujian</h3>
-            </div>
-            <!-- /.box-header -->
-            <div class="box-body">
-              <table class="table table-bordered table-hover datatable" style="width: 100%">
-                <thead>
-                    <tr>
-                      <th>Ujian</th>
-                        @if(ADHhelper::getUserData()->level == 's')
-                        <th>Nilai</th>
-                        @endif
-                      <th>Proses</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Mid</td>
-                        @if(ADHhelper::getUserData()->level == 's')
-                        @php
-                            $nilai = DB::table('mid')->where([
-                                'id_user' => session('userID'),
-                            ])->first();
-                        @endphp
-                        <td>{{$nilai ? $nilai->nilai : '-'}}</td>
-                        <td>
-                            <a class="btn btn-default btn-sm" href="{{route('materi.mid')}}">
-                              <i class="glyphicon glyphicon-question-sign"></i> Ujian Mid
-                            </a>
-                        </td>
-                        @else
-                        <td>
-                            <a class="btn btn-default btn-sm" href="{{route('materi.nilaiMid')}}">
-                              <i class="glyphicon glyphicon-question-sign"></i> Nilai
-                            </a>
-                        </td>
-                        @endif
-                    </tr>
-                    <tr>
-                        <td>Akhir</td>
-                        @if(ADHhelper::getUserData()->level == 's')
-                        @php
-                            $nilai = DB::table('akhir')->where([
-                                'id_user' => session('userID'),
-                            ])->first();
-                        @endphp
-                        <td>{{$nilai ? $nilai->nilai : '-'}}</td>
-                        <td>
-                            <a class="btn btn-default btn-sm" href="{{route('materi.akhir')}}">
-                              <i class="glyphicon glyphicon-question-sign"></i> Ujian Akhir
-                            </a>
-                        </td>
-                        @else
-                        <td>
-                            <a class="btn btn-default btn-sm" href="{{route('materi.nilaiAkhir')}}">
-                              <i class="glyphicon glyphicon-question-sign"></i> Nilai
-                            </a>
-                        </td>
-                        @endif
-                    </tr>
-                </tbody>
-              </table>
-            </div>
-            <!-- /.box-body -->
-          </div>
-    </div>
 </div>
 @endsection
 

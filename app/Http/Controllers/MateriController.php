@@ -48,12 +48,13 @@ class MateriController extends Controller
             'materi' => 'required',
             'deskripsi' => 'required',
             'berkas' => 'required|file|mimes:pdf',
-            'jumlah_pertanyaan_ujian' => 'required|numeric|min:0',
-            'jumlah_pertanyaan_mid' => 'required|numeric|min:0',
-            'jumlah_pertanyaan_akhir' => 'required|numeric|min:0',
+            'jumlah_narasi' => 'required|numeric|min:0',
+            'durasi' => 'required|numeric|min:10',
         ]);
 
-        $data = $request->only('unit', 'materi', 'deskripsi', 'jumlah_pertanyaan_ujian', 'jumlah_pertanyaan_mid', 'jumlah_pertanyaan_akhir');
+        $data = $request->only('unit', 'materi', 'deskripsi', 'jumlah_narasi', 'durasi');
+        $data['jumlah_narasi'] = str_replace('.', '', $data['jumlah_narasi']);
+        $data['durasi'] = str_replace('.', '', $data['durasi']);
         
         $id_materi = DB::table('materi')->insertGetId($data);
 
@@ -88,9 +89,8 @@ class MateriController extends Controller
             'materi' => 'required',
             'deskripsi' => 'required',
             'berkas' => 'file|mimes:pdf',
-            'jumlah_pertanyaan_ujian' => 'required|numeric|min:0',
-            'jumlah_pertanyaan_mid' => 'required|numeric|min:0',
-            'jumlah_pertanyaan_akhir' => 'required|numeric|min:0',
+            'jumlah_narasi' => 'required|numeric|min:0',
+            'durasi' => 'required|numeric|min:10',
         ]);
 
         $data = $request->only('unit', 'materi', 'deskripsi', 'jumlah_pertanyaan_ujian', 'jumlah_pertanyaan_mid', 'jumlah_pertanyaan_akhir');

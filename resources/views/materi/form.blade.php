@@ -45,35 +45,24 @@
 	</div>
 
 	@php
-	$class = $errors->has('jumlah_pertanyaan_ujian') ? 'form-group has-error' : 'form-group';
-	$message = $errors->has('jumlah_pertanyaan_ujian') ? $errors->first('jumlah_pertanyaan_ujian') : '';
+	$class = $errors->has('jumlah_narasi') ? 'form-group has-error' : 'form-group';
+	$message = $errors->has('jumlah_narasi') ? $errors->first('jumlah_narasi') : '';
 	@endphp
 	<div class="{{$class}}">
-		<label for="jumlah_pertanyaan_ujian" data-toggle="tooltip" title="{{$message}}">Jumlah Pertanyaan Ujian</label>
+		<label for="jumlah_narasi" data-toggle="tooltip" title="{{$message}}">Jumlah Narasi</label>
 		<div data-toggle="tooltip" title="{{$message}}">
-			{!! Form::text('jumlah_pertanyaan_ujian',null,['class'=> 'form-control','placeholder'=>'Isi Jumlah Pertanyaan Ujian', 'id' => 'jumlah_pertanyaan_ujian']) !!}
+			{!! Form::text('jumlah_narasi',null,['class'=> 'form-control mask_ribuan','placeholder'=>'Isi Jumlah Narasi', 'id' => 'jumlah_narasi']) !!}
 		</div>
 	</div>
 
 	@php
-	$class = $errors->has('jumlah_pertanyaan_mid') ? 'form-group has-error' : 'form-group';
-	$message = $errors->has('jumlah_pertanyaan_mid') ? $errors->first('jumlah_pertanyaan_mid') : '';
+	$class = $errors->has('durasi') ? 'form-group has-error' : 'form-group';
+	$message = $errors->has('durasi') ? $errors->first('durasi') : '';
 	@endphp
 	<div class="{{$class}}">
-		<label for="jumlah_pertanyaan_mid" data-toggle="tooltip" title="{{$message}}">Jumlah Pertanyaan Mid</label>
+		<label for="durasi" data-toggle="tooltip" title="{{$message}}">Durasi (Menit)</label>
 		<div data-toggle="tooltip" title="{{$message}}">
-			{!! Form::text('jumlah_pertanyaan_mid',null,['class'=> 'form-control','placeholder'=>'Isi Jumlah Pertanyaan Mid', 'id' => 'jumlah_pertanyaan_mid']) !!}
-		</div>
-	</div>
-
-	@php
-	$class = $errors->has('jumlah_pertanyaan_akhir') ? 'form-group has-error' : 'form-group';
-	$message = $errors->has('jumlah_pertanyaan_akhir') ? $errors->first('jumlah_pertanyaan_akhir') : '';
-	@endphp
-	<div class="{{$class}}">
-		<label for="jumlah_pertanyaan_akhir" data-toggle="tooltip" title="{{$message}}">Jumlah Pertanyaan Akhir</label>
-		<div data-toggle="tooltip" title="{{$message}}">
-			{!! Form::text('jumlah_pertanyaan_akhir',null,['class'=> 'form-control','placeholder'=>'Isi Jumlah Pertanyaan Akhir', 'id' => 'jumlah_pertanyaan_akhir']) !!}
+			{!! Form::text('durasi',null,['class'=> 'form-control mask_ribuan','placeholder'=>'Isi Durasi (Menit)', 'id' => 'durasi']) !!}
 		</div>
 	</div>
 
