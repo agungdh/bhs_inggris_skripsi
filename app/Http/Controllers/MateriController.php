@@ -179,7 +179,7 @@ class MateriController extends Controller
         }
 
         $nilai = (int)($benar / ($materi->jumlah_narasi * 5) * 100);
-
+        
         Ujian::insert([
             'id_user' => session('userID'),
             'id_materi' => $id_materi,
