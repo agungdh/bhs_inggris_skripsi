@@ -158,8 +158,8 @@ Ujian
     function cekSubmit() {
         var data = $("form").serializeArray();
 
-        if (data.length < 16) {
-            swal('Peringatan', `Masih ada ${16 - data.length} soal yang belum dijawab`, 'error');
+        if (data.length < {{($materi->jumlah_narasi * 5) + 1}} ) {
+            swal('Peringatan', `Masih ada ${ {{($materi->jumlah_narasi * 5) + 1}} - data.length} soal yang belum dijawab`, 'error');
         } else {
             swal({
               title: "Konfirmasi",
