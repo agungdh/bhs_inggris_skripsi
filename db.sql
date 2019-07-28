@@ -3,7 +3,7 @@
 -- Host: 127.0.0.1	Database: english_new
 -- ------------------------------------------------------
 -- Server version 	5.5.5-10.3.13-MariaDB-2
--- Date: Wed, 24 Jul 2019 06:57:33 +0700
+-- Date: Sun, 28 Jul 2019 20:09:01 +0700
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -40,7 +40,7 @@ CREATE TABLE `materi` (
 LOCK TABLES `materi` WRITE;
 /*!40000 ALTER TABLE `materi` DISABLE KEYS */;
 SET autocommit=0;
-INSERT INTO `materi` VALUES (9,'VALIDATION MATERI HORTATORY','VALIDATION MATERI HORTATORY','VALIDATION MATERI HORTATORY',5,90),(10,'recount text','recount text','recount text',5,90),(11,'Definition of narrative text','Definition of narrative text','Definition of narrative text',5,90),(12,'Analytical Exposition Text','Analytical Exposition Text','Analytical Exposition Text',5,90);
+INSERT INTO `materi` VALUES (9,'VALIDATION MATERI HORTATORY','VALIDATION MATERI HORTATORY','VALIDATION MATERI HORTATORY',5,90),(10,'recount text','recount text','recount text',5,90),(11,'Definition of narrative text','Definition of narrative text','Definition of narrative text',20,90),(12,'Analytical Exposition Text','Analytical Exposition Text','Analytical Exposition Text',5,90);
 /*!40000 ALTER TABLE `materi` ENABLE KEYS */;
 UNLOCK TABLES;
 COMMIT;
@@ -199,7 +199,7 @@ CREATE TABLE `ujian` (
   KEY `ujian_ibfk_2` (`id_user`),
   CONSTRAINT `ujian_ibfk_1` FOREIGN KEY (`id_materi`) REFERENCES `materi` (`id`),
   CONSTRAINT `ujian_ibfk_2` FOREIGN KEY (`id_user`) REFERENCES `user` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -225,4 +225,4 @@ COMMIT;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on: Wed, 24 Jul 2019 06:57:33 +0700
+-- Dump completed on: Sun, 28 Jul 2019 20:09:01 +0700
