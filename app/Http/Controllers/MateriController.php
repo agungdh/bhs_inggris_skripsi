@@ -94,7 +94,9 @@ class MateriController extends Controller
             'durasi' => 'required|numeric|min:10',
         ]);
 
-        $data = $request->only('unit', 'materi', 'deskripsi', 'jumlah_pertanyaan_ujian', 'jumlah_pertanyaan_mid', 'jumlah_pertanyaan_akhir');
+        $data = $request->only('unit', 'materi', 'deskripsi', 'jumlah_narasi', 'durasi');
+        $data['jumlah_narasi'] = str_replace('.', '', $data['jumlah_narasi']);
+        $data['durasi'] = str_replace('.', '', $data['durasi']);
         
         Materi::where('id', $id)->update($data);
 
@@ -147,7 +149,7 @@ class MateriController extends Controller
         }
 
         $materi = Materi::find($id_materi);
-        $narasis = Narasi::where('id_materi', $materi->id)->inRandomOrder()->limit(5)->get();
+        $narasis = Narasi::where('id_materi', $materi->id)->inRandomOrder()->limit($materi->jumlah_narasi)->get();
         $soals = [];
         $narasis_keys = [];
         $narasis_keys_reversed = [];
