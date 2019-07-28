@@ -3,7 +3,7 @@
 -- Host: 127.0.0.1	Database: english_new
 -- ------------------------------------------------------
 -- Server version 	5.5.5-10.3.13-MariaDB-2
--- Date: Sun, 28 Jul 2019 20:16:30 +0700
+-- Date: Sun, 28 Jul 2019 21:30:38 +0700
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -119,8 +119,8 @@ COMMIT;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `soal` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `id_materi` int(11) DEFAULT NULL,
-  `id_cerita` int(11) DEFAULT NULL,
+  `id_materi` int(11) NOT NULL,
+  `id_cerita` int(11) NOT NULL,
   `pertanyaan` text NOT NULL,
   `jawaban_a` varchar(191) NOT NULL,
   `jawaban_b` varchar(191) NOT NULL,
@@ -133,7 +133,7 @@ CREATE TABLE `soal` (
   KEY `id_cerita` (`id_cerita`),
   CONSTRAINT `soal_ibfk_1` FOREIGN KEY (`id_materi`) REFERENCES `materi` (`id`),
   CONSTRAINT `soal_ibfk_2` FOREIGN KEY (`id_cerita`) REFERENCES `cerita` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=136 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=138 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -225,4 +225,4 @@ COMMIT;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on: Sun, 28 Jul 2019 20:16:30 +0700
+-- Dump completed on: Sun, 28 Jul 2019 21:30:38 +0700

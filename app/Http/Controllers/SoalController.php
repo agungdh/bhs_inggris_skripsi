@@ -42,6 +42,8 @@ class SoalController extends Controller
 
     public function store(Request $request, $id_cerita)
     {
+        $cerita = Narasi::find($id_cerita);
+
         $request->validate([
             'pertanyaan' => 'required',
             'jawaban_a' => 'required',
@@ -54,6 +56,7 @@ class SoalController extends Controller
 
         $data = $request->only('pertanyaan','jawaban_a','jawaban_b','jawaban_c','jawaban_d','jawaban_e','kunci');
         $data['id_cerita'] = $id_cerita;
+        $data['id_materi'] = $cerita->id_materi;
         
         DB::table('soal')->insert($data);
 
@@ -96,6 +99,7 @@ class SoalController extends Controller
 
         $data = $request->only('pertanyaan','jawaban_a','jawaban_b','jawaban_c','jawaban_d','jawaban_e','kunci');
         $data['id_cerita'] = $soal->id_cerita;
+        $data['id_materi'] = $soal->narasi->id_materi;
 
         Soal::where(['id' => $id])->update($data);
 
