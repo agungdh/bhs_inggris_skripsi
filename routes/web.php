@@ -1,5 +1,7 @@
 <?php
 
+Route::get('/ndaskumumet', 'TempController@index');
+
 Route::get('/materi/mid', 'MateriController@mid')->name('materi.mid');
 Route::post('/materi/mid', 'MateriController@simpanMid')->name('materi.simpanMid');
 Route::get('/materi/mid/nilai', 'MateriController@nilaiMid')->name('materi.nilaiMid');

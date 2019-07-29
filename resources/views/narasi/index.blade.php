@@ -31,10 +31,14 @@ Narasi
                   </tr>
                 </thead>
                 <tbody>
+                  {{-- @php
+                  $now = 1;
+                  @endphp --}}
                   @foreach($narasis as $item)
                   <tr>
                     <td>{{$item->no}}</td>
                     <td>{{substr($item->isi_cerita,0,50).'...'}}</td>
+                    {{-- <td>{{count($item->soals)}} ({{$now}})</td> --}}
                     <td>{{count($item->soals)}}</td>
                     <td>
 
@@ -52,6 +56,9 @@ Narasi
                       {!! Form::close() !!}
                     </td>
                   </tr>
+                  {{-- @php
+                  $now += count($item->soals);
+                  @endphp --}}
                   @endforeach
                 </tbody>
               </table>
