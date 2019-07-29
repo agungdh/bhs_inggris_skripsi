@@ -3,7 +3,7 @@
 -- Host: 127.0.0.1	Database: english_new
 -- ------------------------------------------------------
 -- Server version 	5.5.5-10.3.13-MariaDB-2
--- Date: Mon, 29 Jul 2019 09:29:40 +0700
+-- Date: Mon, 29 Jul 2019 09:58:04 +0700
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -200,7 +200,7 @@ CREATE TABLE `ujian` (
   KEY `ujian_ibfk_2` (`id_user`),
   CONSTRAINT `ujian_ibfk_1` FOREIGN KEY (`id_materi`) REFERENCES `materi` (`id`),
   CONSTRAINT `ujian_ibfk_2` FOREIGN KEY (`id_user`) REFERENCES `user` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -210,11 +210,12 @@ CREATE TABLE `ujian` (
 LOCK TABLES `ujian` WRITE;
 /*!40000 ALTER TABLE `ujian` DISABLE KEYS */;
 SET autocommit=0;
+INSERT INTO `ujian` VALUES (18,'2019-07-29 09:57:54',7,11,2);
 /*!40000 ALTER TABLE `ujian` ENABLE KEYS */;
 UNLOCK TABLES;
 COMMIT;
 
--- Dumped table `ujian` with 0 row(s)
+-- Dumped table `ujian` with 1 row(s)
 --
 
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -226,4 +227,4 @@ COMMIT;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on: Mon, 29 Jul 2019 09:29:40 +0700
+-- Dump completed on: Mon, 29 Jul 2019 09:58:04 +0700

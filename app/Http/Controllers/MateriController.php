@@ -145,7 +145,7 @@ class MateriController extends Controller
         }
 
         $materi = Materi::find($id_materi);
-        $narasis = Narasi::where('id_materi', $materi->id)->inRandomOrder()->limit($materi->jumlah_narasi)->get();
+        $narasis = Narasi::where('id_materi', $materi->id)->orderBy('no')->get();
         $soals = [];
         $narasis_keys = [];
         $narasis_keys_reversed = [];
@@ -153,7 +153,7 @@ class MateriController extends Controller
         foreach ($narasis as $narasi) {
             $narasis_keys[$i] = $narasi->id;
             $narasis_keys_reversed[$narasi->id] = $i;
-            $soals[$narasi->id] = Soal::where('id_cerita', $narasi->id)->inRandomOrder()->limit(5)->get();
+            $soals[$narasi->id] = Soal::where('id_cerita', $narasi->id)->orderBy('no')->get();
             $i++;
         }
         $type = 'materi';
@@ -163,8 +163,15 @@ class MateriController extends Controller
 
     public function simpanUjian(Request $request, $id_materi)
     {
-        $materi = Materi::find($id_materi);
+        $materi = Materi::with('narasis.soals')->find($id_materi);
         
+        $jmlSoal = 0;
+        foreach ($materi->narasis as $narasi) {
+            foreach ($narasi->soals as $soal) {
+                $jmlSoal++;
+            }    
+        }
+
         $jawabans = $request->soal ?: [];
         $soals_raw = array_keys($jawabans);
         $soals = Soal::whereIn('id', $soals_raw)->get();
@@ -176,7 +183,7 @@ class MateriController extends Controller
             }
         }
 
-        $nilai = (int)($benar / ($materi->jumlah_narasi * 5) * 100);
+        $nilai = (int)($benar / $jmlSoal * 100);
         
         Ujian::insert([
             'id_user' => session('userID'),

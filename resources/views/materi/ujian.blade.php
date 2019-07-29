@@ -9,26 +9,8 @@ Ujian
 	<div class="col-md-12">
 <div class="box  box-primary animated slideInLeft" style="box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.50); border-radius: 10px;">
             <div class="box-header with-border">
-                @switch($type)
-                    @case('materi')
-                        <p>{{$materi->unit}} - {{$materi->materi}}</p>
-                        {!! Form::open(['route' => ['materi.simpanUjian', $materi->id], 'role' => 'form']) !!}
-                        @break
-
-                    @case('mid')
-                        {!! Form::open(['route' => ['materi.simpanMid'], 'role' => 'form']) !!}
-                        <p>Ujian Mid</p>                        
-                        @break
-
-                    @case('akhir')
-                        {!! Form::open(['route' => ['materi.simpanAkhir'], 'role' => 'form']) !!}
-                        <p>Ujian Akhir</p>                        
-                        @break
-
-                    @default
-                        <span>Something went wrong, please try again</span>
-                        @break
-                @endswitch
+                <p>{{$materi->unit}} - {{$materi->materi}}</p>
+                {!! Form::open(['route' => ['materi.simpanUjian', $materi->id], 'role' => 'form']) !!}
                 <p>Siswa Waktu <span id="textSisaWaktu"></span></p>
             </div>
 
@@ -66,12 +48,10 @@ Ujian
                             $pertanyaans[4]['id_soal'] = $soal->id;
                             $pertanyaans[4]['value'] = 'e';
                             $pertanyaans[4]['jawaban'] = $soal->jawaban_e;
-
-                            shuffle($pertanyaans);
                             @endphp
 
                             <div class="col-md-12">
-                                <p>{{$i}}. {{$soal->pertanyaan}}</p>
+                                <p>{{$soal->no}}. {{$soal->pertanyaan}}</p>
 
                                 <ol type="a">
                                     @foreach($pertanyaans as $pertanyaan)
@@ -158,8 +138,8 @@ Ujian
     function cekSubmit() {
         var data = $("form").serializeArray();
 
-        if (data.length < {{($materi->jumlah_narasi * 5) + 1}} ) {
-            swal('Peringatan', `Masih ada ${ {{($materi->jumlah_narasi * 5) + 1}} - data.length} soal yang belum dijawab`, 'error');
+        if (data.length < {{array_sum(array_map('count', $soals)) + 1}} ) {
+            swal('Peringatan', `Masih ada ${ {{array_sum(array_map('count', $soals)) + 1}} - data.length} soal yang belum dijawab`, 'error');
         } else {
             swal({
               title: "Konfirmasi",
