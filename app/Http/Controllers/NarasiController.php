@@ -34,10 +34,11 @@ class NarasiController extends Controller
     public function store(Request $request, $id_materi)
     {
         $request->validate([
+            'no' => 'required',
             'isi_cerita' => 'required',
         ]);
 
-        $data = $request->only('isi_cerita');
+        $data = $request->only('isi_cerita', 'no');
         $data['id_materi'] = $id_materi;
 
         DB::table('cerita')->insert($data);
@@ -62,10 +63,11 @@ class NarasiController extends Controller
         $narasi = Narasi::find($id);
 
         $request->validate([
+            'no' => 'required',
             'isi_cerita' => 'required',
         ]);
 
-        $data = $request->only('isi_cerita');
+        $data = $request->only('isi_cerita', 'no');
         $data['id_materi'] = $narasi->id_materi;
 
         Narasi::where(['id' => $id])->update($data);

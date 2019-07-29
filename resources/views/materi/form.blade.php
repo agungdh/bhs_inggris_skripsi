@@ -45,17 +45,6 @@
 	</div>
 
 	@php
-	$class = $errors->has('jumlah_narasi') ? 'form-group has-error' : 'form-group';
-	$message = $errors->has('jumlah_narasi') ? $errors->first('jumlah_narasi') : '';
-	@endphp
-	<div class="{{$class}}">
-		<label for="jumlah_narasi" data-toggle="tooltip" title="{{$message}}">Jumlah Narasi</label>
-		<div data-toggle="tooltip" title="{{$message}}">
-			{!! Form::text('jumlah_narasi',null,['class'=> 'form-control mask_ribuan','placeholder'=>'Isi Jumlah Narasi', 'id' => 'jumlah_narasi']) !!}
-		</div>
-	</div>
-
-	@php
 	$class = $errors->has('durasi') ? 'form-group has-error' : 'form-group';
 	$message = $errors->has('durasi') ? $errors->first('durasi') : '';
 	@endphp

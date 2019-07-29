@@ -1,4 +1,16 @@
 <div class="box-body">
+
+	@php
+	$class = $errors->has('no') ? 'form-group has-error' : 'form-group';
+	$message = $errors->has('no') ? $errors->first('no') : '';
+	@endphp
+	<div class="{{$class}}">
+		<label for="no" data-toggle="tooltip" title="{{$message}}">No</label>
+		<div data-toggle="tooltip" title="{{$message}}">
+			{!! Form::number('no',null,['class'=> 'form-control','placeholder'=>'Isi No', 'id' => 'no', 'min' => '1']) !!}
+		</div>
+	</div>
+	
 	@php
 	$class = $errors->has('pertanyaan') ? 'form-group has-error' : 'form-group';
 	$message = $errors->has('pertanyaan') ? $errors->first('pertanyaan') : '';

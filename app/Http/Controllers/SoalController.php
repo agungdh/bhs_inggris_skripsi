@@ -45,6 +45,7 @@ class SoalController extends Controller
         $cerita = Narasi::find($id_cerita);
 
         $request->validate([
+            'no' => 'required',
             'pertanyaan' => 'required',
             'jawaban_a' => 'required',
             'jawaban_b' => 'required',
@@ -54,7 +55,7 @@ class SoalController extends Controller
             'kunci' => 'required',
         ]);
 
-        $data = $request->only('pertanyaan','jawaban_a','jawaban_b','jawaban_c','jawaban_d','jawaban_e','kunci');
+        $data = $request->only('pertanyaan','jawaban_a','jawaban_b','jawaban_c','jawaban_d','jawaban_e','kunci','no');
         $data['id_cerita'] = $id_cerita;
         $data['id_materi'] = $cerita->id_materi;
         
@@ -88,6 +89,7 @@ class SoalController extends Controller
         $soal = Soal::find($id);
 
        $request->validate([
+            'no' => 'required',
             'pertanyaan' => 'required',
             'jawaban_a' => 'required',
             'jawaban_b' => 'required',
@@ -97,7 +99,7 @@ class SoalController extends Controller
             'kunci' => 'required',
         ]);
 
-        $data = $request->only('pertanyaan','jawaban_a','jawaban_b','jawaban_c','jawaban_d','jawaban_e','kunci');
+        $data = $request->only('pertanyaan','jawaban_a','jawaban_b','jawaban_c','jawaban_d','jawaban_e','kunci','no');
         $data['id_cerita'] = $soal->id_cerita;
         $data['id_materi'] = $soal->narasi->id_materi;
 

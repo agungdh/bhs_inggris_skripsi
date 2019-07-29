@@ -23,6 +23,7 @@ Soal
               <table class="table table-bordered table-hover datatable" style="width: 100%">
                 <thead>
 	                <tr>
+                       <th>No</th>
                        <th>Pertanyaan</th>
                        <th>Jawaban A</th>
                        <th>Jawaban B</th>
@@ -35,7 +36,8 @@ Soal
                 <tbody>
                 	@foreach($soals as $item)
                 	<tr>
-                		<td>{{$item->pertanyaan}}</td>
+                		<td>{{$item->no}}</td>
+                    <td>{{$item->pertanyaan}}</td>
                     
                     <td>
                       @if($item->kunci == 'a')

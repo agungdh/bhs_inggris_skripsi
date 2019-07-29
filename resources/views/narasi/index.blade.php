@@ -24,6 +24,7 @@ Narasi
               <table class="table table-bordered table-hover datatable" style="width: 100%">
                 <thead>
                   <tr>
+                       <th>No</th>
                        <th>Narasi</th>
                        <th>Jumlah Soal</th>
                        <th>Proses</th>
@@ -32,17 +33,9 @@ Narasi
                 <tbody>
                   @foreach($narasis as $item)
                   <tr>
+                    <td>{{$item->no}}</td>
                     <td>{{substr($item->isi_cerita,0,50).'...'}}</td>
-                    @php
-                    $jumlah_soal = count($item->soals);
-
-                    if ($jumlah_soal < 5) {
-                      $color = 'red';
-                    } else {
-                      $color = 'green';
-                    }
-                    @endphp
-                    <td style="color: {{$color}};">{{$jumlah_soal}}</td>
+                    <td>{{count($item->soals)}}</td>
                     <td>
 
                       {!! Form::open(['id' => 'formHapus' . $item->id, 'route' => ['narasi.destroy', $item->id], 'method' => 'delete']) !!}

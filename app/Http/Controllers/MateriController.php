@@ -44,18 +44,16 @@ class MateriController extends Controller
 
     public function store(Request $request)
     {
+        $request['durasi'] = str_replace('.', '', $request['durasi']);
         $request->validate([
             'unit' => 'required',
             'materi' => 'required',
             'deskripsi' => 'required',
             'berkas' => 'required|file|mimes:pdf',
-            'jumlah_narasi' => 'required|numeric|min:0',
             'durasi' => 'required|numeric|min:10',
         ]);
 
-        $data = $request->only('unit', 'materi', 'deskripsi', 'jumlah_narasi', 'durasi');
-        $data['jumlah_narasi'] = str_replace('.', '', $data['jumlah_narasi']);
-        $data['durasi'] = str_replace('.', '', $data['durasi']);
+        $data = $request->only('unit', 'materi', 'deskripsi', 'durasi');
         
         $id_materi = DB::table('materi')->insertGetId($data);
 
@@ -85,18 +83,16 @@ class MateriController extends Controller
     {        
         $materi = Materi::find($id);
 
+        $request['durasi'] = str_replace('.', '', $request['durasi']);
         $request->validate([
             'unit' => 'required',
             'materi' => 'required',
             'deskripsi' => 'required',
             'berkas' => 'file|mimes:pdf',
-            'jumlah_narasi' => 'required|numeric|min:0',
             'durasi' => 'required|numeric|min:10',
         ]);
 
-        $data = $request->only('unit', 'materi', 'deskripsi', 'jumlah_narasi', 'durasi');
-        $data['jumlah_narasi'] = str_replace('.', '', $data['jumlah_narasi']);
-        $data['durasi'] = str_replace('.', '', $data['durasi']);
+        $data = $request->only('unit', 'materi', 'deskripsi', 'durasi');
         
         Materi::where('id', $id)->update($data);
 
